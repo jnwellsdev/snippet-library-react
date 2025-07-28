@@ -1,0 +1,183 @@
+/* Theme Variables - Centralized color system using Radix UI variables */
+.dark,
+.dark-theme {
+  --gray-1: #0e1521;
+  --gray-2: #151c28;
+  --gray-3: #1a2436;
+  --gray-4: #1f2a3e;
+  --gray-5: #263145;
+  --gray-6: #2e3a4e;
+  --gray-7: #3c485c;
+  --gray-8: #546177;
+  --gray-9: #616e85;
+  --gray-10: #6e7c93;
+  --gray-11: #a6b4cd;
+  --gray-12: #e7effb;
+
+  --gray-a1: #8d150002;
+  --gray-a2: #f0dcb109;
+  --gray-a3: #9ebcf617;
+  --gray-a4: #9dbdfb20;
+  --gray-a5: #adc8fb28;
+  --gray-a6: #b6d2ff32;
+  --gray-a7: #c0d8fc43;
+  --gray-a8: #c6dbfd62;
+  --gray-a9: #c9dcff72;
+  --gray-a10: #cce0ff82;
+  --gray-a11: #d2e2fec6;
+  --gray-a12: #ebf3fefb;
+
+  --gray-contrast: #ffffff;
+  --gray-surface: rgba(0, 0, 0, 0.05);
+  --gray-indicator: #616e85;
+  --gray-track: #616e85;
+
+  --orange-9: #ff7318;
+  --orange-10: #f26700;
+  --orange-11: #ffa36f;
+  --orange-12: #ffdcc9;
+  --orange-a9: #ff7318;
+  --orange-a10: #ff6a00f1;
+  --orange-a11: #ffa36f;
+  --orange-a12: #ffdcc9;
+
+  --orange-contrast: #fff;
+  --orange-surface: #64330080;
+  --orange-indicator: #ff7318;
+  --orange-track: #ff7318;
+}
+
+@supports (color: color(display-p3 1 1 1)) {
+  @media (color-gamut: p3) {
+    .dark,
+    .dark-theme {
+      --gray-1: oklch(19.6% 0.0256 261.1);
+      --gray-2: oklch(22.5% 0.0263 261.1);
+      --gray-3: oklch(26% 0.0369 261.1);
+      --gray-4: oklch(28.6% 0.0384 261.1);
+      --gray-5: oklch(31.3% 0.0384 261.1);
+      --gray-6: oklch(34.7% 0.0384 261.1);
+      --gray-7: oklch(39.8% 0.0384 261.1);
+      --gray-8: oklch(49% 0.0384 261.1);
+      --gray-9: oklch(53.7% 0.0384 261.1);
+      --gray-10: oklch(58.3% 0.0384 261.1);
+      --gray-11: oklch(76.8% 0.0384 261.1);
+      --gray-12: oklch(94.9% 0.0181 261.1);
+
+      --gray-a1: color(display-p3 0.0588 0.0824 0.0039 / 0.059);
+      --gray-a2: color(display-p3 0.9765 1 0.7882 / 0.03);
+      --gray-a3: color(display-p3 0.6549 0.7686 1 / 0.086);
+      --gray-a4: color(display-p3 0.6588 0.7804 1 / 0.118);
+      --gray-a5: color(display-p3 0.7137 0.8157 1 / 0.15);
+      --gray-a6: color(display-p3 0.7373 0.8431 0.9922 / 0.191);
+      --gray-a7: color(display-p3 0.7882 0.8706 1 / 0.254);
+      --gray-a8: color(display-p3 0.8 0.8784 1 / 0.376);
+      --gray-a9: color(display-p3 0.8118 0.8784 1 / 0.439);
+      --gray-a10: color(display-p3 0.8235 0.8863 1 / 0.503);
+      --gray-a11: color(display-p3 0.8471 0.898 1 / 0.765);
+      --gray-a12: color(display-p3 0.9294 0.9569 1 / 0.978);
+
+      --gray-contrast: #ffffff;
+      --gray-surface: color(display-p3 0 0 0 / 5%);
+      --gray-indicator: oklch(53.7% 0.0384 261.1);
+      --gray-track: oklch(53.7% 0.0384 261.1);
+    }
+  }
+}
+/* Override Radix UI page background for better dark mode */
+:root,
+.light,
+.light-theme {
+  --color-page-background: white;
+  --color-card-background: white;
+  --color-text-primary: var(--gray-12);
+  --color-text-secondary: var(--gray-11);
+  --color-text-muted: var(--gray-11);
+}
+
+.dark,
+.dark-theme {
+  --color-page-background: var(--gray-3);
+  --color-card-background: var(--gray-5);
+  --color-text-primary: var(--gray-a12);
+  --color-text-secondary: var(--gray-10);
+  --color-text-muted: var(--gray-10);
+  --color-panel: var(--gray-4);
+}
+
+/* Force dark mode styles - fallback if Radix UI doesn't apply classes */
+body.dark {
+  --color-page-background: var(--gray-3) !important;
+}
+
+/* Ensure body uses the theme background */
+/* body {
+  background-color: var(--color-page-background) !important;
+  color: var(--color-text-primary) !important;
+} */
+
+/* Additional fallback - force dark mode if nothing else works */
+html {
+  background-color: var(--gray-4);
+}
+
+/* Ensure all text inherits the theme color */
+* {
+  color: inherit;
+}
+
+/* Common component variables */
+:root {
+  --border-color: var(--gray-6);
+  --border-color-hover: var(--gray-8);
+  --surface-color: var(--color-card-background);
+  --surface-hover: var(--gray-6);
+  --shadow-color: var(--black-a4);
+  --shadow-hover: var(--black-a4);
+
+  /* Primary color variables */
+  --color-primary: var(--gray-8);
+  --color-primary-hover: var(--gray-7);
+  --color-primary-text: white;
+  --color-primary-shadow: var(--black-a4);
+
+  /* Success color variables */
+  --color-success: var(--green-9);
+  --color-success-hover: var(--green-10);
+  --color-success-text: white;
+  --color-success-shadow: var(--green-a4);
+
+  /* Danger color variables */
+  --color-danger: var(--orange-9);
+  --color-danger-hover: var(--orange-10);
+  --color-danger-text: white;
+  --color-danger-shadow: var(--orange-a4);
+}
+
+.dark,
+.dark-theme {
+  --border-color: var(--gray-6);
+  --border-color-hover: var(--gray-8);
+  --surface-color: var(--color-card-background);
+  --surface-hover: var(--gray-3);
+  --shadow-color: var(--black-a3);
+  --shadow-hover: var(--black-a4);
+
+  /* Primary color variables for dark theme */
+  --color-primary: var(--gray-8);
+  --color-primary-hover: var(--gray-7);
+  --color-primary-text: white;
+  --color-primary-shadow: var(--black-a4);
+
+  /* Success color variables for dark theme */
+  --color-success: var(--green-9);
+  --color-success-hover: var(--green-10);
+  --color-success-text: white;
+  --color-success-shadow: var(--green-a4);
+
+  /* Danger color variables for dark theme */
+  --color-danger: var(--orange-9);
+  --color-danger-hover: var(--orange-10);
+  --color-danger-text: white;
+  --color-danger-shadow: var(--orange-a4);
+}

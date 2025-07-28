@@ -1,0 +1,6 @@
+.login-card {
+  background: var(--gray-4);
+}
+.login-card input {
+  padding: 20px 8px;
+}

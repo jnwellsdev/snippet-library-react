@@ -1,0 +1,4 @@
+# This folder will contain authentication components
+# - LoginForm.jsx
+# - AuthGuard.jsx  
+# - UserProfile.jsx

@@ -1,0 +1,40 @@
+.syntax-highlighter {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  background: var(--gray-1);
+}
+
+.syntax-highlighter pre {
+  margin: 0;
+  padding: 16px;
+  overflow-x: auto;
+  background: var(--gray-1);
+  font-family:
+    'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Override any conflicting styles to let the theme handle colors */
+code[class*='language-'],
+pre[class*='language-'] {
+  text-shadow: none;
+  white-space: pre-wrap !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  /* Remove custom color - let the theme handle it */
+}
+
+.syntax-highlighter code {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  font-family: inherit;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}

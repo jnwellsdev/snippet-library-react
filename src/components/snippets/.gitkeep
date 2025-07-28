@@ -1,0 +1,6 @@
+# This folder will contain snippet-related components
+# - SnippetCard.jsx
+# - SnippetDetail.jsx
+# - SnippetForm.jsx
+# - SnippetPreview.jsx
+# - SyntaxHighlighter.jsx

@@ -1,0 +1,584 @@
+@import "/assets/fonts/chevy-sans/fonts.css";
+/*------------------------------------*
+
+    TABLE OF CONTENT - $ search prefix
+
+    CUSTOM_PROPERTIES
+    FONT_FAMILY
+    FONT_COLOR
+    FONT_SIZE
+    BACKGROUND COLORS
+    LAYOUT
+    ANCHOR
+    LIST GROUP
+    PANEL
+    WELL
+    TABLE
+    TABS
+    NAV RESET
+    NAVTABS
+    NAV-INVERSE
+    PAGINATION
+    BTN
+    BTN_CTA
+    BTN_MAIN
+    BTN_ALT1
+    BTN_ALT2
+    BTN_ALT3
+    BTN_NAV1 AND BTN_NAV2
+    HOME_MISC
+    HOME_QUICK-NAV
+    HOME_INVENTORY SEARCH BUTTONS
+    WIDGET_INVENTORY SEARCH
+    WIDGET_BANNER
+    WIDGET_MODELBAR
+    FIXED_HEADER
+    MOBILE LEAD DRIVER
+    CARBRAVO
+    ADA
+
+    cta             006DC7
+    cta hover       0e4180
+    main            262626
+    main hover      333333
+
+/*------------------------------------*
+    $CUSTOM_PROPERTIES
+\*------------------------------------*/
+:root {
+    --cta-background-color: #006DC7;
+    --cta-font-color: #fff;
+    --cta-hover-color: #0e4180;
+    --main-color: #262626;
+}
+
+/*------------------------------------*
+    $FONT_FAMILY
+\*------------------------------------*/
+body { font-family: 'ChevySans'; }
+.heading-xl, .heading-lg, h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 { font-family: 'ChevySans'; font-weight: 600; font-style: normal !important; text-transform: capitalize !important; }
+.heading-xl em, .heading-lg em, h1 em, h2 em, h3 em, h4 em, h5 em, h6 em, .heading-xl i, .heading-lg i, h1 i, h2 i, h3 i, h4 i, h5 i, h6 i {font-style: normal !important;}
+#inventorySearchWidget .isTitle, .srpRefineSearch .panel-title, .srpVehicle h2, .srpVehicle h1.vehicleTitle, #vehiclePageViews h2, .featuredVehicle .title h3 { font-weight: normal !important; }
+.btn, label, b, strong { font-family: 'ChevySans'; font-weight: bold !important;}
+.heading-bold { font-family: 'ChevySans'; font-weight: bold;}
+#nav, .navbar.navbar-default {font-family: 'ChevySans';}
+.text-uppercase {text-transform: capitalize;}
+
+
+/*------------------------------------*
+    $FONT_COLOR
+\*------------------------------------*/
+body { color: #262626; }
+hr { border-top-color: #ddd; }
+.text-default { color: var(--main-color); }
+.text-main { color: var(--main-color); }
+.text-cta { color: var(--cta-background-color); }
+.bg-main .text-muted { color: #A1A1A1; }
+
+/*------------------------------------*
+    $FONT_SIZE
+\*------------------------------------*/
+
+@media (max-width:991px) {
+body, .btn, .dropdown-menu, .form-control { font-size: 13px; }
+}
+/*------------------------------------*
+    $BACKGROUND COLORS
+\*------------------------------------*/
+
+.bg-main {
+    background-color: var(--main-color);
+    border: 1px solid transparent;
+    color: #fff;
+}
+.bg-cta {
+    background-color: var(--cta-background-color);
+    border: 1px solid transparent;
+    color: #fff;
+}
+.bg-alt1 {
+    background-color: #f2f2f2;
+    border: 1px solid transparent;
+}
+.bg-alt2 {
+    background-color: #E6E6E6;
+    border: 1px solid transparent;
+}
+.bg-alt3 {
+    background-color: #6C6C6D;
+    border: 1px solid transparent;
+	color: #fff;
+}
+.offerBlock {
+    background-color: var(--main-color);
+    color: #fff;
+}
+
+@media (max-width:767px) {
+.snap-content { background-color: #fff !important; }
+}
+/*------------------------------------*
+    $LAYOUT
+\*------------------------------------*/
+.contentWrapper { padding-bottom: 2em; }
+.contentSectionO, .contentSectionE { padding: 65px 0; }
+
+@media (min-width: 992px) {
+.bannerWrapper { padding: 35px 0; }
+.bannerWrapper.bannerLayout02 { padding: 0; }
+}
+@media (max-width:991px) {
+.contentSectionO, .contentSectionE { padding: 45px 0; }
+}
+@media (max-width:767px) {
+.contentSectionO, .contentSectionE { padding: 35px 0; }
+}
+
+footer {background: #f2f2f2; text-align: left !important;}
+#footer-chevy-tagline img {max-width: 300px !important; margin: 15px 0 25px !important;}
+
+/*------------------------------------*
+    $ANCHOR
+\*------------------------------------*/
+a { color: var(--cta-background-color); }
+a:hover, a:focus { color: var(--cta-hover-color); }
+.bg-main p a:not(.btn) { color: #A1A1A1; text-decoration: underline; }
+.bg-alt2 p a:not(.btn), .bg-alt3 p a:not(.btn) { color: inherit; text-decoration: underline; }
+
+/*------------------------------------*
+    $LIST GROUP
+\*------------------------------------*/
+
+/*------------------------------------*
+    $PANEL
+\*------------------------------------*/
+.panel, .panel-heading, .panel-footer { border-radius: 0; }
+.panel { box-shadow: none; }
+.panel-title { font-weight: bold; }
+.panel-default a:not(.btn) { color: inherit; }
+/*------------------------------------*
+    $WELL
+\*------------------------------------*/
+.well {
+    box-shadow: none;
+    border-radius: 0;
+}
+/*------------------------------------*
+    $TABLE
+\*------------------------------------*/
+
+/*------------------------------------*
+    $TABS
+\*------------------------------------*/
+.nav-tabs.nav-justified > li > a, .nav-tabs > li > a { background-color: #eee; }
+.nav-tabs.nav-justified > .active > a { border-bottom-color: transparent; }
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus { background-color: #fff; }
+/* tabs inside well */
+.well .nav-tabs.nav-justified > .active > a { background-color: #f5f5f5; }
+.well .panel .nav-tabs.nav-justified > .active > a { background-color: #fff; }
+/*------------------------------------*
+    $NAVTABS
+\*------------------------------------*/
+.nav-pills li.active a, .nav-pills li.active a:hover, .nav-pills li.active a:focus {
+    background-color: #393839;
+    border-color: transparent;
+    color: #fff;
+}
+/*------------------------------------*
+    $NAV-INVERSE
+\*------------------------------------*/
+
+/*------------------------------------*
+    $PAGINATION
+\*------------------------------------*/
+.pagination .active a, .pagination .active span, .pagination .active a:hover, .pagination .active span:hover, .pagination .active a:focus, .pagination .active span:focus {
+    background-color: #767676;
+    border-color: transparent;
+    color: #fff;
+}
+.pagination > li > a, .pagination > li > span { color: #393839; }
+.pagination > li > a:focus, .pagination > li > a:hover, .pagination > li > span:focus, .pagination > li > span:hover { color: #222; }
+/*------------------------------------*
+    $BTN
+\*------------------------------------*/
+.btn {
+    border-radius: 8px; 
+	border-width: 2px; 
+	padding: 8px 20px;
+	transition: all 250ms ease-in-out;
+}
+.srpRefineSearch #accordion ul li a { border-radius: 3px; } /* used on srp refine search section - leave in IF you are removing border radius from all buttons */
+
+/*------------------------------------*
+    $BTN_CTA
+\*------------------------------------*/
+.btn-cta {
+    color: #fff;
+    background-color: var(--cta-background-color);
+    border-color: var(--cta-background-color);
+}
+.btn-cta:hover, .btn-cta:focus, .btn-cta:active, .btn-cta.active, .open > .dropdown-toggle.btn-cta {
+    color: #fff;
+    background-color: var(--cta-hover-color);
+    border-color: var(--cta-hover-color);
+}
+.bg-cta .btn-cta {
+    color: var(--main-color);
+    background-color: #fff;
+    border-color: #fff;
+}
+.bg-cta .btn-cta:hover, .bg-cta .btn-cta:focus, .bg-cta .btn-cta:active {
+    color: var(--main-color);
+    background-color: #e6e6e6;
+    border-color: #e6e6e6;
+}
+/*------------------------------------*
+    $BTN_MAIN
+\*------------------------------------*/
+.btn-main, .btn-alt3.active, .nav .btn-alt3.active /* used on specials pages as tabs */ {
+    color: var(--cta-background-color);
+    background-color: transparent;
+    border-color: var(--cta-background-color);
+}
+.btn-main:hover, .btn-main:focus, .btn-main:active, .btn-main.active, .open .dropdown-toggle.btn-main {
+    color: var(--cta-hover-color);
+    background-color: transparent;
+    border-color: var(--cta-hover-color);
+}
+.bg-cta .btn-main, .bg-main .btn-main {
+    color: #fff;
+    background-color: transparent;
+    border-color: #fff;
+}
+.bg-cta .btn-main:hover, .bg-main .btn-main:hover, .bg-cta .btn-main:focus, .bg-main .btn-main:focus, .bg-cta .btn-main:active, .bg-main .btn-main:active {
+    color: var(--main-color);
+    background-color: #fff;
+    border-color: #fff;
+}
+.showroom .menu .btn-alt3 { background-image: none; } /* used on showroom page, in the left menu section */
+/*------------------------------------*
+    $BTN_ALT1
+\*------------------------------------*/
+.btn-alt1 {
+    color: var(--main-color); 
+    background-color: #fff; 
+    border-color: #fff;
+}
+.btn-alt1:hover, .btn-alt1:focus, .btn-alt1:active, .btn-alt1.active, .open .dropdown-toggle.btn-alt1, .nav .btn-alt1:hover, .nav .btn-alt1:focus, .nav .btn-alt1:active, .nav .btn-alt1.active {
+    color: #262626; 
+    background-color: #e6e6e6; 
+    border-color: #e6e6e6;
+}
+/*------------------------------------*
+    $BTN_ALT2
+\*------------------------------------*/
+.btn-alt2 {
+    color: #000;
+    background-color: #fff;
+    border-color: #ddd;
+}
+.btn-alt2:hover, .btn-alt2:focus, .btn-alt2:active, .btn-alt2.active, .open .dropdown-toggle.btn-alt2, .nav .btn-alt2:hover, .nav .btn-alt2:focus, .nav .btn-alt2:active, .nav .btn-alt2.active {
+    color: #000;
+    background-color: #e5e5e5;
+    border-color: #ddd;
+}
+/*------------------------------------*
+    $BTN_ALT3
+\*------------------------------------*/
+.btn-alt3 {
+    color: #fff;
+    background-color: #666;
+    border-color: #666;
+}
+.btn-alt3:hover, .btn-alt3:focus, .btn-alt3:active, .open .dropdown-toggle.btn-alt3, .nav .btn-alt3:hover, .nav .btn-alt3:focus, .nav .btn-alt3:active {
+    color: #fff;
+    background-color: #444;
+    border-color: #444;
+}
+/*------------------------------------*
+    $BTN_LINK
+\*------------------------------------*/
+.btn-link {
+    color: var(--cta-background-color); 
+    font-size: 18px; 
+    font-weight: 600; 
+    transition: all 250ms ease-in-out;
+}
+.btn-link:after {
+    content: "\F134"; 
+    position: absolute; 
+    padding-left: 8px; 
+    font-family: bootstrap-icons !important; 
+    z-index: 1;
+}
+.btn-link:hover {
+    color: var(--cta-hover-color); 
+    text-decoration: none;
+}
+/*------------------------------------*
+    $BTN_NAV1 and $BTN_NAV2
+\*------------------------------------*/
+.btn-nav1, .btn-nav2 {
+    color: #fff;
+    background-color: transparent;
+    border-color: transparent #000 transparent transparent;
+    border-radius: 0;
+}
+.btn-nav1:hover, .btn-nav1:focus, .btn-nav1:active, .btn-nav1.active, .open .dropdown-toggle.btn-nav1, .btn-nav2:hover, .btn-nav2:focus, .btn-nav2:active, .btn-nav2.active, .open .dropdown-toggle.btn-nav2 {
+    color: #fff;
+    background-color: #000;
+    border-color: #000;
+    border-radius: 0;
+}
+
+/* Button EV - SF Case 01020132 */
+.btn-ev a, .btn-ev button { background-color: #0058B3 !important; border-color: #0058B3 !important; color: #fff !important; }
+.btn-ev a:hover, .btn-ev a:focus, .btn-ev button:hover, .btn-ev button:focus { background-color: #026fdf !important; border-color: #026fdf !important; color: #fff !important; }
+
+/*------------------------------------*
+    $HOME_MISC
+\*------------------------------------*/
+
+@media (max-width: 1799px) and (min-width: 1441px) {
+.desktop.container, #nav-container.container { width: 87%; }
+}
+
+/* Reduce size of homepage banner disclaimer button via DES-121356 & DES-192502 */
+.homepage #disclaimerBtn-Main.btn-sm { font-size: 10px; padding: 3px 8px; right: 10px; top: 10px; left: auto;}
+
+.homepage #disclaimerBtn-Main { font-size: 10px; padding: 3px 8px; right: 15px; top: 15px; left: auto; color: var(--main-color); background-color: #fff; border-color: var(--cta-background-color);}
+.homepage #disclaimerBtn-Main:hover, .homepage #disclaimerBtn-Main:active, .homepage #disclaimerBtn-Main:focus {color: #fff; background-color: var(--cta-hover-color); border-color: var(--cta-hover-color);}
+
+/* Set Disclaimer Modal Text Color DES-192502 */
+#disclaimerModal-Main { color: #000; }
+
+.border-rounded {border-radius: 20px;}
+
+/* Change color for model bar */
+.vehicleModels .nav > li a::after {background: var(--cta-background-color) !important;}
+
+/*------------------------------------*
+    $HOME_QUICK-NAV
+\*------------------------------------*/
+/* QuickNavs Images */
+.qNav-img {display: flex; flex-wrap: wrap; justify-content: space-between;}
+.qNav-img-item {width: 33.33%; padding: 5px 10px;}
+.qNav-img-item .img-background { padding-top: 90%; transition: all 250ms ease-in-out;}
+.qNav-img-item a:hover .img-background {opacity: 0.8;}
+
+@media (max-width: 991px) {
+.qNav-img-item {width: 100%; padding: 5px 0 35px;}
+.qNav-img-item .img-background {padding-top: 45%;}
+}
+
+/* QuickNavs Icons */
+.quick-navs {display: flex; flex-wrap: wrap; justify-content: space-between;}
+.quick-nav-item {width: 20%; padding: 20px 0;}
+.quick-nav-item img {max-height: 50px; transition: all 250ms ease-in-out;}
+
+@media (min-width: 992px) {
+.quick-navs {margin: 0 -25px;}
+.quick-nav-item a {display: block; padding: 25px 25px 35px; transition: all 250ms ease-in-out;}
+.quick-nav-item a:hover {background: var(--cta-background-color);}
+.quick-nav-item a:hover img {filter: invert(99%) sepia(8%) saturate(188%) hue-rotate(271deg) brightness(116%) contrast(100%);}
+.quick-nav-item a:hover .text-default, .quick-nav-item a:hover .btn-link {color: #fff;}
+}
+@media (max-width: 1199px) {
+.quick-nav-item .h1 {font-size: 26px;}
+}
+@media (max-width: 991px) {
+.quick-nav-item {width: 46%;}
+}
+@media (max-width: 539px) {
+.quick-nav-item .h1 {font-size: 22px;}
+}
+
+/*------------------------------------*
+    $HOME_INVENTORY SEARCH BUTTONS
+\*------------------------------------*/
+
+
+/*------------------------------------*
+    $WIDGET_INVENTORY SEARCH
+\*------------------------------------*/
+/* Horizontal widget */
+.horizontalInventorySearch .form-control {border-radius: 8px !important;}
+.opensearch>.opensearch-input-box {border-radius: 8px !important;}
+.opensearch>.opensearch-input-box>button.stat-search-submit {border-radius: 0 7px 7px 0;}
+
+/* Cosmos widget Blue button */
+.search-by-filter__search-button, .search-by-budget__search-button, .search-by-keyword #opensearch-submit {color: #fff!important; background: var(--cta-background-color)!important; border: 2px solid var(--cta-background-color)!important;}
+.search-by-filter__search-button:active, .search-by-filter__search-button:focus, .search-by-filter__search-button:hover, .search-by-budget__search-button:active, .search-by-budget__search-button:focus, .search-by-budget__search-button:hover, .search-by-keyword #opensearch-submit:active, .search-by-keyword #opensearch-submit:focus, .search-by-keyword #opensearch-submit:hover {color: #fff!important; border: 2px solid var(--cta-hover-color)!important; background: var(--cta-hover-color)!important;}
+
+/* Cosmos widget white background */
+.bg-light .shop-by-vehicle__header {color: #262626;}
+.bg-light .shop-by-vehicle .search-nav__img {background-color: #262626; transition: all 250ms ease-in-out;}
+.bg-light .shop-by-vehicle .search-nav__btn {color: #262626; transition: all 250ms ease-in-out;}
+.bg-light .shop-by-vehicle .search-nav__item.active, .bg-light .shop-by-vehicle .search-nav__item:hover {border-bottom: 2px solid var(--cta-background-color); transition: all 150ms ease-in-out;}
+.bg-light .shop-by-vehicle .search-nav__item.active .search-nav__btn, .bg-light .shop-by-vehicle .search-nav__item:hover .search-nav__btn {color: var(--cta-background-color);}
+.bg-light .shop-by-vehicle .search-nav__item.active .search-nav__img, .bg-light .shop-by-vehicle .search-nav__item:hover .search-nav__img {background-color: var(--cta-background-color);}
+.bg-light .search-by-filter__search-button, .bg-light .search-by-budget__search-button {color: #fff; background: var(--cta-background-color); border: 2px solid var(--cta-background-color);}
+.bg-light .search-by-filter__search-button:active, .bg-light .search-by-filter__search-button:focus, .bg-light .search-by-filter__search-button:hover, .bg-light .search-by-budget__search-button:active, .bg-light .search-by-budget__search-button:focus, .bg-light .search-by-budget__search-button:hover {color: #fff; border: 2px solid var(--cta-hover-color); background: var(--cta-hover-color);}
+.bg-light .search-by-keyword #opensearch-submit {color: #fff; background: var(--cta-background-color);}
+.bg-light .search-by-keyword #opensearch-submit:active, .bg-light .search-by-keyword #opensearch-submit:focus, .bg-light .search-by-keyword #opensearch-submit:hover {color: #fff; background: var(--cta-hover-color);}
+.bg-light .search-by-budget__tab-button {color: #262626;}
+.bg-light .search-by-budget__tabs-list {border-left: 1px solid #262626;}
+.bg-light .search-by-budget__tab-button:active, .bg-light .search-by-budget__tab-button:focus, .bg-light .search-by-budget__tab-button:hover {color: var(--cta-font-color);}
+.bg-light .search-by-filter__less-filters select.form-control:focus, .bg-light .search-by-filter__more-filters select.form-control:focus, .bg-light .search-by-keyword .search_bar:focus, .bg-light .budget-range__min-input:focus, .bg-light .budget-range__max-input:focus {border-width: 0.1em;}
+.bg-light .search-by-filter__reset-button, .bg-light .search-by-filter__reset-button, .bg-light .search-by-filter__reset-button:active, .bg-light .search-by-filter__reset-button:focus, .bg-light .search-by-filter__reset-button:hover, .bg-light .search-by-budget__reset-button, .bg-light .search-by-budget__reset-button:active, .bg-light .search-by-budget__reset-button:focus, .bg-light .search-by-budget__reset-button:hover { color: inherit; }
+
+@media (min-width: 501px) {
+.bg-white .shop-by-vehicle .search-nav__btn {padding: 8px 5px;}
+}
+
+/*------------------------------------*
+    $WIDGET_BANNER
+\*------------------------------------*/
+.bannerLayout02 #inventorySearchWidget { color: #fff; padding: 10px 25px 15px; }
+#inventorySearchWidget .btn-main { background-color: var(--cta-background-color); border-color: var(--cta-background-color); color: #262626; }
+#inventorySearchWidget .btn-main:hover { background-color: var(--cta-hover-color); border-color: var(--cta-hover-color); color: #262626; }
+
+@media (min-width: 992px) {
+.bannerLayout02 #inventorySearchWidget { background-color: rgba(0,0,0,.85); margin-top: 35px; }
+}
+@media (max-width: 991px) and (min-width: 768px) {
+.bannerLayout02 > .container { width: 100%; }
+}
+@media (max-width: 991px) {
+.bannerLayout02 #inventorySearchWidget { background-color: #000; }
+}
+
+
+/* Carousel indicators styling */
+/*#carousel-Main .indicator-control-container {display: block !important; width: 50%; left: 0; right: 0; transform: initial; margin: 0 auto; bottom: 20px !important;}
+#carousel-Main .carousel-indicators {display: flex; gap: 10px;}
+#carousel-Main .carousel-indicators li {width: 100% !important; height: 6px !important; border-radius: 8px; margin: 0; transition: all 250ms ease-in-out;}
+#carousel-Main .carousel-indicators li:hover {background-color: #fff!important; opacity: 0.7;}
+.homepage #content #carousel-Main .carousel-indicators .slide-indicator--basic {width: 100% !important; border: 0!important; background-color: rgba(255,255,255,.4) !important;}
+.homepage #content #carousel-Main .carousel-indicators .slide-indicator--basic.active {height: 6px !important; width: initial; margin: 0 !important; background-color: #fff!important;}*/
+[id^="carouselWithDisclaimer-"] [id^="carousel-"] .carousel-navigation-controls .carousel-control {transition: all 250ms ease-in-out; bottom: calc(50% - 28px) !important;
+  top: calc(50% - 28px) !important;}
+#carousel-Main .carousel-control .fa {font: normal normal normal 38px / 1 bootstrap-icons; display: block; color: #D6D6D6;}
+#carousel-Main .carousel-control .fa-angle-left::before {content: '\F12A';}
+#carousel-Main .carousel-control .fa-angle-right::before {content: '\F134';}
+
+@media (min-width: 768px) {
+#carousel-Main .carousel-control {width: 8%;}
+}
+@media (max-width: 767px) {
+#carousel-Main .carousel-control .fa {font-size: 28px;}
+#carouselWithDisclaimer-Main .carousel-navigation-controls .carousel-control {bottom: 20px !important; top: 20px !important;}
+}
+
+
+/*------------------------------------*
+    $WIDGET_MODELBAR
+\*------------------------------------*/
+
+
+@media(min-width:992px) {
+.fixedHeaderArea { background: #fff; }
+.fixedHeaderArea ~ #content { padding-top: 180px; }
+}
+/*------------------------------------*
+    $MOBILE LEAD DRIVER
+\*------------------------------------*/
+#offerBar {
+    text-align: center;
+    padding: 8px 0;
+}
+#offerBar ul { margin-bottom: 0; }
+#offerBar, #offerBar .h1 { font-size: 20px; }
+
+@media (min-width:768px) and (max-width:1199px) {
+#offerBar, #offerBar .h1 { font-size: 24px; }
+}
+
+@media (min-width:1200px) {
+#offerBar, #offerBar .h1 {
+    font-size: 32px;
+    line-height: 28px;
+}
+}
+
+
+/*------------------------------------*
+    $SITEWIDE_MISC
+\*------------------------------------*/
+.wizard ul li .badge {background-color: #fff !important;}
+.wizard ul li.active {background-color: var(--cta-background-color) !important;}
+.wizard ul li a {color: #fff !important;}
+.badge {padding: 6px 7px 3px;}
+.subNav_Chevrolet a.border-bottom-cta-3x::before {background-color: var(--cta-background-color) !important;}
+
+/*------------------------------------*
+    SRP
+\*------------------------------------*/
+.custom-checkbox input[type="checkbox"]:checked + .checkbox::before {color: var(--cta-background-color) !important;}
+.srpVehicleSpecial {
+background: url('../../shared/images/inventory/specialRibbonChevrolet.png') no-repeat !important;
+}
+.vdpVehicleSpecial {
+background: url(' https://cdn.dlron.us/assets/shared/images/inventory/vehicleSpecialRibbon_english.png ') no-repeat;
+}
+
+/*------------------------------------*
+    CARBRAVO
+\*------------------------------------*/
+.carBravoBtn .btn { 
+    color: #fff;
+    background-color: #0375D3;
+    border-color: #0375D3;
+}
+.carBravoBtn .btn:hover, .carBravoBtn .btn:active, .carBravoBtn .btn:focus, .carBravoBtn .btn:visited { 
+    color: #fff;
+    background-color: #025ea9;
+    border-color: #025ea9;
+}
+.feature-search-button {
+    color: #fff;
+}
+
+/*------------------------------------*
+    $FORM
+\*------------------------------------*/
+/*.form-control { box-shadow: none; }
+.form-control:focus { border-color: var(--main-color); box-shadow: none; }
+.form-group input:not([type="submit"]), .form-group textarea, .form-group select { background-color: #f2f2f2; border: 0; border-bottom: 1px solid #e6e6e6; border-radius: 4px 4px 0 0; }
+.form-group input:not([type="submit"]):hover, .form-group textarea:hover, .form-group select:hover { border-bottom: 1px solid var(--main-color); }
+.has-success .form-control { border-color: transparent; }*/
+
+/*------------------------------------*
+    $MRP
+\*------------------------------------*/
+.mrp-featured-spec { text-align: left; border-bottom: 1px solid #000; padding: 30px 10px; }
+.mrp-featured-specs { gap: 50px; }
+.mrp-featured-spec-border { border-right: 0px; }
+.top-actions .btn-link:after {content: "" !important;}
+
+@media (max-width: 849px) {
+.mrp-featured-specs { display: block; }
+}
+
+/*------------------------------------*
+    ADA
+\*------------------------------------*/
+#content p a:not(.btn), #content-main li a:not(.btn), footer .copyright a {
+    text-decoration: underline;
+}
+footer .copyrightInfo .copyright a {
+    color: var(--cta-hover-color);
+}
+.horizontalSearchOptions li:not(.active) a {
+	color: #767676!important;
+}
+.details-header .vehicle-title__year {
+    color: #767676!important;
+}
+
+/*------------------------------------*
+    01396147
+\*------------------------------------*/
+.banner-disclaimer-content .banner-disclaimer-btn { 
+    width: 200px; margin: auto; 
+}

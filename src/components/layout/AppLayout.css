@@ -1,0 +1,26 @@
+.app-layout {
+  min-height: calc(100vh - 66px);
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+.app-layout__main {
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .app-layout {
+    min-height: 100vh;
+  }
+
+  .app-layout__main {
+    padding: 0;
+  }
+}
+
+@media (min-width: 769px) {
+  .app-layout__main {
+    padding: 0;
+  }
+}

@@ -1,0 +1,110 @@
+.error-message {
+  border-radius: var(--radius-2);
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--orange-6);
+  background: var(--orange-2);
+  color: var(--orange-10);
+}
+
+.error-message-icon {
+  color: var(--orange-9);
+  flex-shrink: 0;
+}
+
+.error-message-text {
+  color: var(--orange-10);
+  line-height: 1.4;
+}
+
+.error-message-actions {
+  flex-shrink: 0;
+}
+
+.error-message-retry,
+.error-message-dismiss {
+  color: var(--orange-9);
+  border-radius: var(--radius-1);
+}
+
+.error-message-retry:hover,
+.error-message-dismiss:hover {
+  background: var(--orange-4);
+  color: var(--orange-10);
+}
+
+/* Variants */
+.error-message-inline {
+  padding: 0.5rem 0.75rem;
+  font-size: var(--font-size-1);
+  border-radius: var(--radius-1);
+}
+
+.error-message-banner {
+  border-radius: 0;
+  border-left: none;
+  border-right: none;
+  padding: 1rem;
+  background: var(--orange-3);
+  border-color: var(--orange-7);
+}
+
+.error-message-card {
+  padding: 1rem 1.25rem;
+  background: var(--orange-1);
+  border-color: var(--orange-5);
+}
+
+.error-message-card-wrapper {
+  border: 1px solid var(--orange-6);
+  background: var(--orange-1);
+}
+
+.error-message-card-wrapper .error-message-card {
+  border: none;
+  background: transparent;
+  padding: 0;
+}
+
+.error-message-default {
+  /* Default styles already applied above */
+}
+
+/* States */
+.error-message[aria-live='polite'] {
+  /* Ensure screen readers announce the error */
+}
+
+/* Animation for new errors */
+@keyframes error-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.error-message {
+  animation: error-slide-in 0.2s ease-out;
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+  .error-message {
+    padding: 0.75rem;
+  }
+
+  .error-message-banner {
+    padding: 0.75rem;
+  }
+
+  .error-message-card {
+    padding: 1rem;
+  }
+
+  .error-message-text {
+    font-size: var(--font-size-1);
+  }
+}

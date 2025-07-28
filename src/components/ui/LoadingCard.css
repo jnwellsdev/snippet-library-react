@@ -1,0 +1,222 @@
+/* LoadingCard Component Styles */
+
+.loading-cards-container {
+  display: contents; /* This makes it inherit the parent grid */
+}
+
+.loading-card {
+  background: var(--surface-color);
+  border-radius: 8px;
+  padding: 16px;
+  border: 1px solid var(--border-color);
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  width: 100%; /* Ensure it fills the grid cell */
+  box-sizing: border-box;
+  box-shadow: 0 1px 3px var(--shadow-color);
+}
+
+.loading-card--snippet {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 240px; /* Increased to match SnippetCard with live preview */
+}
+
+.loading-card--list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-height: 120px;
+}
+
+.loading-card--detail {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  min-height: 400px;
+}
+
+/* Skeleton base styles */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--surface-hover) 25%,
+    var(--gray-4) 50%,
+    var(--surface-hover) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 0.375rem;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* Snippet card skeletons */
+.loading-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  min-height: 36px; /* Account for button height */
+}
+
+.skeleton--title {
+  height: 1.5rem;
+  width: 60%;
+}
+
+.skeleton--actions {
+  height: 32px; /* Match button heights */
+  width: 120px; /* Wider to represent multiple buttons */
+}
+
+.loading-card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 12px;
+}
+
+.skeleton--preview-text {
+  height: 120px; /* Match the actual SnippetPreview height in cards */
+  width: 100%;
+}
+
+.loading-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.skeleton--author {
+  width: 30%;
+}
+
+.skeleton--date {
+  width: 25%;
+}
+
+/* List card skeletons */
+.skeleton--list-title {
+  height: 1.25rem;
+  width: 80%;
+  margin-bottom: 0.5rem;
+}
+
+.skeleton--list-content {
+  height: 3rem;
+  width: 100%;
+  margin-bottom: 0.75rem;
+}
+
+.skeleton--list-meta {
+  height: 0.875rem;
+  width: 60%;
+}
+
+/* Detail card skeletons */
+.loading-card-detail-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.skeleton--detail-title {
+  height: 2rem;
+  width: 60%;
+}
+
+.skeleton--detail-meta {
+  height: 1rem;
+  width: 40%;
+}
+
+.loading-card-detail-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  flex: 1;
+}
+
+.skeleton--detail-code {
+  height: 12rem;
+  width: 100%;
+}
+
+.skeleton--detail-preview {
+  height: 12rem;
+  width: 100%;
+}
+
+.loading-card-detail-actions {
+  display: flex;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.skeleton--button {
+  height: 2.5rem;
+  width: 6rem;
+  border-radius: 0.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .loading-card {
+    padding: 1rem;
+  }
+
+  .loading-card-detail-content {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .skeleton--detail-code,
+  .skeleton--detail-preview {
+    height: 8rem;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    animation: none;
+    background: var(--surface-hover);
+  }
+
+  .loading-card {
+    animation: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .skeleton {
+    background: var(--border-color);
+  }
+
+  .loading-card {
+    border-color: var(--border-color-hover);
+  }
+}

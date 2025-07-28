@@ -1,0 +1,1918 @@
+/* -------------------- EXTEND ---------------------------
+
+    TYPOGRAPHY
+    GRID
+    - CSS Columns
+    GRID ROWS
+    RESPONSIVE UTILITIES
+        - Bootstrap 3.2 additions (delete this section after upgrade !!!!!!!!!!!!!!!!!!!!!!!!)
+    LISTS (PADDING MARGINS)
+    PADDING 
+    MARGINS
+    FONT AWESOME ICON MARGINS
+    SOCIAL MEDIA
+    BUTTONS
+    BORDERS
+    OPACITY
+    FAUX PARALLAX
+    FIXED HEADER
+    RESPONSIVE BACKGROUND IMAGE
+    PULL CELL
+        - Block formatting context for use in conjunction with pull-left and pull-right
+    SERVICE VIDEO ICONS
+    - SOCIAL MEDIA
+        
+    ------------------
+    UNIVERSAL FIXES
+    - MISC
+    - BREADCRUMB
+    - CAROUSEL
+    - SAFARI FIX
+    - SRP
+    - NAV
+    - CUSTOM PAGES
+    - BANNER LAYOUT
+    - BANNER DISCLAIMER BUTTON
+    - MODEL BAR (FRONT VIEW)
+  - MOBILE BUTTON SIZES
+  - FORMS
+  - CONDITIONAL PULLS
+
+    -----------------
+    ITEMS TO BE ELIMINATED --- !!!!!
+    - PANELS
+    - MISC
+    - BORDERS
+
+    
+ -------------------------------------------------------- */
+
+
+/* ----------- TYPOGRAPHY ------------------------------------------------------------------------------- */
+.larger {
+    font-size: 120%
+}
+
+.heading-lg {
+    font-size: 42px;
+    line-height: 1.1;
+}
+
+.heading-xl {
+    font-size: 60px;
+}
+
+dealeron-map {
+    color: #111;
+}
+
+@media (max-width:991px) {
+    .heading-xl {
+        font-size: 40px;
+    }
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.text-muted {
+	color: #767676;
+}
+
+/* TO BE REMOVED WITH NEW BOOSTRAP VERSION */
+.text-capitalize {
+    text-transform: capitalize;
+}
+
+/* TO BE REMOVED WITH NEW BOOSTRAP VERSION */
+.text-white {
+    color: #fff;
+}
+
+@media (min-width:1200px) {
+    .text-center-lg {
+        text-align: center;
+    }
+
+    .text-left-lg {
+        text-align: left
+    }
+
+    .text-right-lg {
+        text-align: right;
+    }
+}
+
+@media (max-width:1199px) and (min-width:992px) {
+    .text-center-md {
+        text-align: center;
+    }
+
+    .text-left-md {
+        text-align: left
+    }
+
+    .text-right-md {
+        text-align: right;
+    }
+}
+
+@media (max-width:991px) and (min-width:768px) {
+    .text-center-sm {
+        text-align: center;
+    }
+
+    .text-left-sm {
+        text-align: left
+    }
+
+    .text-right-sm {
+        text-align: right;
+    }
+}
+
+@media (max-width:767px) {
+    .text-center-xs {
+        text-align: center
+    }
+
+    .text-left-xs {
+        text-align: left;
+    }
+
+    .text-right-xs {
+        text-align: right;
+    }
+}
+
+@media(max-width:539px) {
+    .text-center-xxs {
+        text-align: center
+    }
+
+    .text-left-xxs {
+        text-align: left;
+    }
+
+    .text-right-xxs {
+        text-align: right;
+    }
+}
+
+/* ----------- GRID ------------------------------------------------------------------------------- */
+.col-11,
+.col-5,
+.col-7,
+.col-8,
+.col-9,
+.col-flush-11,
+.col-flush-5,
+.col-flush-7,
+.col-flush-8,
+.col-flush-9 {
+    display: block;
+    float: left
+}
+
+.col-11:first-child,
+.col-5:first-child,
+.col-7:first-child,
+.col-8:first-child,
+.col-9:first-child,
+.col-flush-11:first-child,
+.col-flush-5:first-child,
+.col-flush-7:first-child,
+.col-flush-8:first-child,
+.col-flush-9:first-child {
+    margin-left: 0
+}
+
+.col-11,
+.col-5,
+.col-7,
+.col-8,
+.col-9 {
+    margin: 0 0 0 1.5%
+}
+
+.col-flush-11,
+.col-flush-5,
+.col-flush-7,
+.col-flush-8,
+.col-flush-9 {
+    margin: 0
+}
+
+.span-1-11 {
+    width: 7.727%
+}
+
+.span-flush-1-11 {
+    width: 9.09%
+}
+
+.span-1-9 {
+    width: 9.777%
+}
+
+.span-flush-1-9 {
+    width: 11.11%
+}
+
+.span-1-8 {
+    width: 11.18%
+}
+
+.span-flush-1-8 {
+    width: 12.5%
+}
+
+.span-1-7 {
+    width: 13%
+}
+
+.span-flush-1-7 {
+    width: 14.28%
+}
+
+.span-1-5 {
+    width: 18.8%
+}
+
+.span-flush-1-5 {
+    width: 20%
+}
+
+@media (max-width:767px) {
+    .col-11,
+    .col-5,
+    .col-7,
+    .col-8,
+    .col-9 {
+        margin-left: 0
+    }
+
+    .span-1-11,
+    .span-1-5,
+    .span-1-7,
+    .span-1-8,
+    .span-1-9,
+    .span-flush-1-11,
+    .span-flush-1-5,
+    .span-flush-1-7,
+    .span-flush-1-8,
+    .span-flush-1-9 {
+        width: 100%
+    }
+}
+
+/* ----------- GRID - CSS Columns ------------------------------------------------- */
+@media (min-width:1200px) {
+    .columnCount2 {
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+        -webkit-column-gap: 30px;
+        -moz-column-gap: 30px;
+        column-gap: 30px;
+    }
+
+    .columnCount3 {
+        -webkit-column-count: 3;
+        -moz-column-count: 3;
+        column-count: 3;
+        -webkit-column-gap: 30px;
+        -moz-column-gap: 30px;
+        column-gap: 30px;
+    }
+}
+
+/* ----------- GRID ROWS ------------------------------------------------------------------------------- */
+.row-full {
+    margin-left: -30px;
+    margin-right: -30px
+}
+
+@media (max-width:767px) {
+    .row-full {
+        margin-left: -15px;
+        margin-right: -15px
+    }
+}
+
+@media (min-width:768px) {
+    .gutter-x {
+        margin-right: -15px;
+        margin-left: -15px
+    }
+
+    .gutter-x>[class*=col-] {
+        padding-right: 0;
+        padding-left: 0
+    }
+
+    .gutter-1x {
+        margin-right: -5px;
+        margin-left: -5px
+    }
+
+    .gutter-1x>[class*=col-] {
+        padding-right: 5px;
+        padding-left: 5px
+    }
+
+    .gutter-2x {
+        margin-right: -10px;
+        margin-left: -10px
+    }
+
+    .gutter-2x>[class*=col-] {
+        padding-right: 10px;
+        padding-left: 10px
+    }
+
+    .row-full.gutter-1x {
+        margin-left: -20px;
+        margin-right: -20px
+    }
+
+    .row-full.gutter-2x {
+        margin-left: -25px;
+        margin-right: -25px
+    }
+}
+
+/* ----------- Grid - Section Pull ------------------------------------------------------------------------------- */
+
+@media (min-width: 768px) {
+    [class*="offset"] .section-pull {
+        padding: 5px 20px 5px 0;
+        float: left;
+    }
+
+    [class*="offset"] blockquote.section-pull {
+        left: 10px;
+        padding: 10px 20px;
+    }
+
+    .col-sm-offset-1 .section-pull {
+        margin-left: calc(-8.33333% - 5px);
+    }
+
+    .col-sm-offset-2 .section-pull {
+        margin-left: calc(-16.6667% - 20px);
+    }
+
+    .col-sm-offset-3 .section-pull {
+        margin-left: calc(-25% - 35px);
+    }
+}
+
+@media (min-width: 992px) {
+    .col-md-offset-1 .section-pull {
+        margin-left: calc(-8.33333% - 5px);
+    }
+
+    .col-md-offset-2 .section-pull {
+        margin-left: calc(-16.6667% - 20px);
+    }
+
+    .col-md-offset-3 .section-pull {
+        margin-left: calc(-25% - 35px);
+    }
+}
+
+@media (min-width: 1200px) {
+    .col-lg-offset-1 .section-pull {
+        margin-left: calc(-8.33333% - 5px);
+    }
+
+    .col-lg-offset-2 .section-pull {
+        margin-left: calc(-16.6667% - 20px);
+    }
+
+    .col-lg-offset-3 .section-pull {
+        margin-left: calc(-25% - 35px);
+    }
+}
+
+/* ----------- Responsive Utilities ------------------------------------------------------------------------------- */
+.visible-xxs {
+    display: none;
+}
+
+/* our inventory.css has xxs at max 539px MS */
+@media(max-width:539px) {
+    .hidden-xxs {
+        display: none !important
+    }
+
+    .visible-xxs {
+        display: block !important;
+    }
+
+    .col-xxs-6 {
+        width: 50%;
+        float: left;
+    }
+
+    .col-xxs-12 {
+        width: 100%
+    }
+
+    .col-xxs-offset-0 {
+        margin-left: 0;
+    }
+}
+
+/* ----------- Flex -------------------------------------------------------------------------------- */
+.flex-all { display: flex; }
+.flex-center-all { display: flex; align-items: center; }
+.flex-wrap { flex-flow: row wrap; }
+
+@media (min-width: 992px) {
+	.flex-center-md {
+		display: flex;
+		align-items: center;
+	}
+}
+
+@media (min-width: 768px) {
+	.flex-center-sm {
+		display: flex;
+		align-items: center;
+	}
+}
+
+/* ----------- Forms ------------------------------------------------------------------------------- */
+@media (min-width:300px) and (max-width:767px) {
+    .form-xs-auto {
+        margin-bottom: -5px;
+    }
+
+    .form-xs-auto .input-group,
+    .form-xs-auto .form-group {
+        display: inline-table;
+        vertical-align: middle;
+        margin-bottom: 5px;
+    }
+
+    .form-xs-auto .input-group .input-group-addon,
+    .form-xs-auto .input-group .input-group-btn,
+    .form-xs-auto .input-group .form-control {
+        width: auto;
+    }
+}
+
+@media(min-width:768px) {
+    .form-inline [class*=col-] .form-control {
+        width: 100%;
+    }
+
+    /* DES-24164 */
+}
+
+@media(max-width:767px) {
+
+    /* Update to iOS on iPhone to accomodate 16px font size zoom - DEV-14517 */
+    .form-control,
+    output {
+        font-size: 16px !important;
+    }
+}
+
+/* ----------- Conditional Pulls ------------------------------------------------------------------ */
+@media (min-width: 1200px) {
+    .pull-right-lg {
+        float: right !important;
+    }
+
+    .pull-left-lg {
+        float: left !important;
+    }
+}
+
+@media (max-width: 1199px) and (min-width: 992px) {
+    .pull-right-md {
+        float: right !important;
+    }
+
+    .pull-left-md {
+        float: left !important;
+    }
+}
+
+@media (max-width: 991px) and (min-width: 768px) {
+    .pull-right-sm {
+        float: right !important;
+    }
+
+    .pull-left-sm {
+        float: left !important;
+    }
+}
+
+@media(max-width: 767px) {
+    .pull-right-xs {
+        float: right !important;
+    }
+
+    .pull-left-xs {
+        float: left !important;
+    }
+}
+
+/* ----------- YouTube Player --------------------------------------------------- */
+
+/* Efficient Method for Embedding YouTube Videos */
+.youtube-player {
+    width: 100%;
+    cursor: pointer;
+}
+
+.youtube-thumb {
+    padding-bottom: 56.25%;
+    cursor: pointer;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+div.play-button {
+    height: 50px;
+    width: 70px;
+    left: calc(50% - 35px);
+    top: calc(50% - 25px);
+    position: absolute;
+    background: url("https://cdn.dealeron.com/assets/shared/images/youtube-play-btn.png") no-repeat top;
+    cursor: pointer;
+}
+
+.youtube-player:hover div.play-button {
+    background-position: bottom;
+}
+
+/* -----------LISTS ------------------------------------------------------------------------------- */
+.list-vert-align>li,
+.vert-middle li {
+    vertical-align: middle
+}
+
+.vert-top li {
+    vertical-align: top
+}
+
+inventory-widget .list-inline {
+    margin-left: 0;
+}
+
+/* ----------- LISTS - PADDING AND MARGINS --------------------------------------------------------- */
+.nopad,
+.pad-x,
+.list-pad-x li {
+    padding: 0
+}
+
+.list-pad_5x li,
+.pad_5x {
+    padding: .5em
+}
+
+.list-pad-1x li,
+.pad-1x {
+    padding: 1em
+}
+
+.list-pad-2x li,
+.pad-2x {
+    padding: 2em
+}
+
+.list-pad-3x li,
+.pad-3x {
+    padding: 3em
+}
+
+.list-pad-4x li,
+.pad-4x {
+    padding: 4em
+}
+
+.list-pad-vert-x li,
+.pad-vert-x {
+    padding-top: 0;
+    padding-bottom: 0
+}
+
+.list-pad-vert_5x li,
+.pad-vert_5x {
+    padding-top: .5em;
+    padding-bottom: .5em
+}
+
+.list-pad-vert-1x li,
+.pad-vert-1x {
+    padding-top: 1em;
+    padding-bottom: 1em
+}
+
+.list-pad-vert-2x li,
+.pad-vert-2x {
+    padding-top: 2em;
+    padding-bottom: 2em
+}
+
+.list-pad-vert-3x li,
+.pad-vert-3x {
+    padding-top: 3em;
+    padding-bottom: 3em
+}
+
+.list-pad-vert-4x li,
+.pad-vert-4x {
+    padding-top: 4em;
+    padding-bottom: 4em
+}
+
+.list-pad-horz-x li,
+.pad-horz-x {
+    padding-left: 0;
+    padding-right: 0
+}
+
+.list-pad-horz_5x li,
+.pad-horz_5x {
+    padding-left: .5em;
+    padding-right: .5em
+}
+
+.list-pad-horz-1x li,
+.pad-horz-1x {
+    padding-left: 1em;
+    padding-right: 1em
+}
+
+.list-pad-horz-2x li,
+.pad-horz-2x {
+    padding-left: 2em;
+    padding-right: 2em
+}
+
+.list-pad-horz-3x li,
+.pad-horz-3x {
+    padding-left: 3em;
+    padding-right: 3em
+}
+
+.list-pad-horz-4x li,
+.pad-horz-4x {
+    padding-left: 4em;
+    padding-right: 4em
+}
+
+.list-pad-top-x li,
+.pad-top-x {
+    padding-top: 0
+}
+
+.list-pad-top_5x li,
+.pad-top_5x {
+    padding-top: .5em
+}
+
+.list-pad-top-1x li,
+.pad-top-1x {
+    padding-top: 1em
+}
+
+.list-pad-top-2x li,
+.pad-top-2x {
+    padding-top: 2em
+}
+
+.list-pad-top-3x li,
+.pad-top-3x {
+    padding-top: 3em
+}
+
+.list-pad-top-4x li,
+.pad-top-4x {
+    padding-top: 4em
+}
+
+.list-pad-bottom-x li,
+.pad-bottom-x {
+    padding-bottom: 0
+}
+
+.list-pad-bottom_5x li,
+.pad-bottom_5x {
+    padding-bottom: .5em
+}
+
+.list-pad-bottom-1x li,
+.pad-bottom-1x {
+    padding-bottom: 1em
+}
+
+.list-pad-bottom-2x li,
+.pad-bottom-2x {
+    padding-bottom: 2em
+}
+
+.list-pad-bottom-3x li,
+.pad-bottom-3x {
+    padding-bottom: 3em
+}
+
+.list-pad-bottom-4x li,
+.pad-bottom-4x {
+    padding-bottom: 4em
+}
+
+.list-pad-left-x li,
+.pad-left-x {
+    padding-left: 0
+}
+
+.list-pad-left_5x li,
+.pad-left_5x {
+    padding-left: .5em
+}
+
+.list-pad-left-1x li,
+.pad-left-1x {
+    padding-left: 1em
+}
+
+.list-pad-left-2x li,
+.pad-left-2x {
+    padding-left: 2em
+}
+
+.list-pad-left-3x li,
+.pad-left-3x {
+    padding-left: 3em
+}
+
+.list-pad-left-4x li,
+.pad-left-4x {
+    padding-left: 4em
+}
+
+.list-pad-right-x li,
+.pad-right-x {
+    padding-right: 0
+}
+
+.list-pad-right_5x li,
+.pad-right_5x {
+    padding-right: .5em
+}
+
+.list-pad-right-1x li,
+.pad-right-1x {
+    padding-right: 1em
+}
+
+.list-pad-right-2x li,
+.pad-right-2x {
+    padding-right: 2em
+}
+
+.list-pad-right-3x li,
+.pad-right-3x {
+    padding-right: 3em
+}
+
+.list-pad-right-4x li,
+.pad-right-4x {
+    padding-right: 4em
+}
+
+.margin-auto {
+    margin-left: auto;
+    margin-right: auto
+}
+
+.list-margin-x li,
+.margin-x,
+.margin-none {
+    margin: 0
+}
+
+.list-margin_5x li,
+.margin_5x {
+    margin: .5em
+}
+
+.list-margin-1x li,
+.margin-1x {
+    margin: 1em
+}
+
+.list-margin-2x li,
+.margin-2x {
+    margin: 2em
+}
+
+.list-margin-3x li,
+.margin-3x {
+    margin: 3em
+}
+
+.list-margin-4x li,
+.margin-4x {
+    margin: 4em
+}
+
+.list-margin-vert-x li,
+.margin-vert-x {
+    margin-top: 0;
+    margin-bottom: 0
+}
+
+.list-margin-vert_5x li,
+.margin-vert_5x {
+    margin-top: .5em;
+    margin-bottom: .5em
+}
+
+.list-margin-vert-1x li,
+.margin-vert-1x {
+    margin-top: 1em;
+    margin-bottom: 1em
+}
+
+.list-margin-vert-2x li,
+.margin-vert-2x {
+    margin-top: 2em;
+    margin-bottom: 2em
+}
+
+.list-margin-vert-3x li,
+.margin-vert-3x {
+    margin-top: 3em;
+    margin-bottom: 3em
+}
+
+.list-margin-vert-4x li,
+.margin-vert-4x {
+    margin-top: 4em;
+    margin-bottom: 4em
+}
+
+.list-margin-horz-x li,
+.margin-horz-x {
+    margin-left: 0;
+    margin-right: 0
+}
+
+.list-margin-horz_5x li,
+.margin-horz_5x {
+    margin-left: .5em;
+    margin-right: .5em
+}
+
+.list-margin-horz-1x li,
+.margin-horz-1x {
+    margin-left: 1em;
+    margin-right: 1em
+}
+
+.list-margin-horz-2x li,
+.margin-horz-2x {
+    margin-left: 2em;
+    margin-right: 2em
+}
+
+.list-margin-horz-3x li,
+.margin-horz-3x {
+    margin-left: 3em;
+    margin-right: 3em
+}
+
+.list-margin-horz-4x li,
+.margin-horz-4x {
+    margin-left: 4em;
+    margin-right: 4em
+}
+
+.list-margin-top-x li,
+.margin-top-x {
+    margin-top: 0
+}
+
+.list-margin-top_5x li,
+.margin-top_5x {
+    margin-top: .5em
+}
+
+.list-margin-top-1x li,
+.margin-top,
+.margin-top-1x {
+    margin-top: 1em
+}
+
+.list-margin-top-2x li,
+.margin-top-2x {
+    margin-top: 2em
+}
+
+.list-margin-top-3x li,
+.margin-top-3x {
+    margin-top: 3em
+}
+
+.list-margin-top-4x li,
+.margin-top-4x {
+    margin-top: 4em
+}
+
+.list-margin-bottom-x li,
+.margin-bottom-x {
+    margin-bottom: 0
+}
+
+.list-margin-bottom_5x li,
+.margin-bottom_5x {
+    margin-bottom: .5em
+}
+
+.list-margin-bottom-1x li,
+.margin-bottom-1x {
+    margin-bottom: 1em
+}
+
+.list-margin-bottom-2x li,
+.margin-bottom-2x {
+    margin-bottom: 2em
+}
+
+.list-margin-bottom-3x li,
+.margin-bottom-3x {
+    margin-bottom: 3em
+}
+
+.list-margin-bottom-4x li,
+.margin-bottom-4x {
+    margin-bottom: 4em
+}
+
+.list-margin-left-x li,
+.margin-left-x {
+    margin-left: 0
+}
+
+.list-margin-left_5x li,
+.margin-left_5x {
+    margin-left: .5em
+}
+
+.list-margin-left-1x li,
+.margin-left-1x {
+    margin-left: 1em
+}
+
+.list-margin-left-2x li,
+.margin-left-2x {
+    margin-left: 2em
+}
+
+.list-margin-left-3x li,
+.margin-left-3x {
+    margin-left: 3em
+}
+
+.list-margin-left-4x li,
+.margin-left-4x {
+    margin-left: 4em
+}
+
+.list-margin-right-x li,
+.margin-right-x {
+    margin-right: 0
+}
+
+.list-margin-right_5x li,
+.margin-right_5x {
+    margin-right: .5em
+}
+
+.list-margin-right-1x li,
+.margin-right-1x {
+    margin-right: 1em
+}
+
+.list-margin-right-2x li,
+.margin-right-2x {
+    margin-right: 2em
+}
+
+.list-margin-right-3x li,
+.margin-right-3x {
+    margin-right: 3em
+}
+
+.list-margin-right-4x li,
+.margin-right-4x {
+    margin-right: 4em
+}
+
+.fa-margin-vert-x {
+    margin-top: 0;
+    margin-bottom: 0
+}
+
+/* ----------- FONT AWESOME ICON MARGINS -------------------------------- */
+.fa-margin-vert_5x {
+    margin: .5rem 0
+}
+
+.fa-margin-vert-1x {
+    margin: 1rem 0
+}
+
+.fa-margin-vert-2x {
+    margin: 2rem 0
+}
+
+.fa-margin-vert-3x {
+    margin: 3rem 0
+}
+
+.fa-margin-vert-4x {
+    margin: 4rem 0
+}
+
+.fa-margin-top-x {
+    margin-top: 0
+}
+
+.fa-margin-top_5x {
+    margin-top: .5rem
+}
+
+.fa-margin-top-1x {
+    margin-top: 1rem
+}
+
+.fa-margin-top-2x {
+    margin-top: 2rem
+}
+
+.fa-margin-top-3x {
+    margin-top: 3rem
+}
+
+.fa-margin-top-4x {
+    margin-top: 4rem
+}
+
+.fa-margin-bottom-x {
+    margin-bottom: 0
+}
+
+.fa-margin-bottom_5x {
+    margin-bottom: .5rem
+}
+
+.fa-margin-bottom-1x {
+    margin-bottom: 1rem
+}
+
+.fa-margin-bottom-2x {
+    margin-bottom: 2rem
+}
+
+.fa-margin-bottom-3x {
+    margin-bottom: 3rem
+}
+
+.fa-margin-bottom-4x {
+    margin-bottom: 4rem
+}
+
+/* ----------- SOCIAL MEDIA   ------------------------------------------------------------------------------- */
+.btn-facebook {
+    color: #fff;
+    background-color: #3b5998;
+    border-color: #3b5998
+}
+
+.btn-facebook:focus,
+.btn-facebook:hover {
+    color: #fff;
+    box-shadow: inset 0 0 12px rgba(0, 0, 0, .1)
+}
+
+.btn-twitter {
+    color: #fff;
+    background-color: #00aced;
+    border-color: #00aced
+}
+
+.btn-twitter:focus,
+.btn-twitter:hover {
+    color: #fff;
+    box-shadow: inset 0 0 12px rgba(0, 0, 0, .1)
+}
+
+.btn-googleplus {
+    color: #fff;
+    background-color: #dd4b39;
+    border-color: #dd4b39
+}
+
+.btn-googleplus:focus,
+.btn-googleplus:hover {
+    color: #fff;
+    box-shadow: inset 0 0 12px rgba(0, 0, 0, .1)
+}
+
+.btn-youtube {
+    color: #fff;
+    background-color: #b00;
+    border-color: #b00
+}
+
+.btn-youtube:focus,
+.btn-youtube:hover {
+    color: #fff;
+    box-shadow: inset 0 0 12px rgba(0, 0, 0, .1)
+}
+
+/* ----------- BUTTONS ------------------------------------------------------------------------------- */
+.border-radius-x,
+.nav-radius-x .btn,
+.list-radius-x .btn {
+    border-radius: 0
+}
+
+/* DO NOT USE GOING FORWARD */
+.btn-right {
+    text-align: right;
+}
+
+.btn-block-right {
+    direction: rtl;
+    /*text-indent: .2em;*/
+    text-align: right;
+    width: 100%;
+}
+
+.btn-left {
+    text-align: left;
+}
+
+.btn-block-left {
+    /*text-indent: .2em;*/
+    text-align: left;
+    width: 100%;
+}
+
+/* Override Default Bootstrap Button Colors */
+.btn-primary,
+.btn-primary:hover,
+.btn-secondary,
+.btn-secondary:hover,
+.btn-success,
+.btn-success:hover,
+.btn-danger,
+.btn-danger:hover,
+.btn-info,
+.btn-info:hover,
+.btn-dark,
+.btn-dark:hover {
+    color: #fff !important;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+
+.btn-warning {
+    color: #212529 !important;
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+
+.btn-warning:hover {
+    color: #212529 !important;
+    background-color: #e0a800;
+    border-color: #d39e00;
+}
+
+.btn-info {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+}
+
+.btn-info:hover {
+    background-color: #138496;
+    border-color: #117a8b;
+}
+
+.btn-light {
+    color: #212529 !important;
+    background-color: #f8f9fa;
+    border-color: #f8f9fa;
+}
+
+.btn-light:hover {
+    color: #212529 !important;
+    background-color: #e2e6ea;
+    border-color: #dae0e5;
+}
+
+.btn-dark {
+    background-color: #343a40;
+    border-color: #343a40;
+}
+
+.btn-dark:hover {
+    background-color: #23272b;
+    border-color: #1d2124;
+}
+
+.badge {
+	background-color: #767676;
+}
+
+/* Pulse button */
+.btn-pulse {
+    box-shadow: 0 0 0 0 #dd0000;
+    -webkit-animation: pulse 2s infinite cubic-bezier(0.3, 0, 0, 1);
+    -moz-animation: pulse 2s infinite cubic-bezier(0.3, 0, 0, 1);
+    animation: pulse 2s infinite cubic-bezier(0.3, 0, 0, 1);
+}
+
+@-webkit-keyframes pulse {
+    to {
+        box-shadow: 0 0 0 10px rgba(221, 0, 0, 0);
+    }
+}
+
+@-moz-keyframes pulse {
+    to {
+        box-shadow: 0 0 0 10px rgba(221, 0, 0, 0);
+    }
+}
+
+@-ms-keyframes pulse {
+    to {
+        box-shadow: 0 0 0 10px rgba(221, 0, 0, 0);
+    }
+}
+
+@keyframes pulse {
+    to {
+        box-shadow: 0 0 0 10px rgba(221, 0, 0, 0);
+    }
+}
+
+
+/* ----------- BORDERS ------------------------------------------------------------------------------- */
+.border-x,
+.nav-border-x .btn {
+    border: 0 !important;
+}
+
+/* ----------- OPACITY ------------------------------------------------------------------------------- */
+.opacity:hover {
+    opacity: 0.9;
+}
+
+/* ----------- FAUX PARALLAX ------------------------------------------------------------------------- */
+
+.fixedBgSec {
+    position: relative;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    background-image: none;
+}
+
+@media (max-width:1199px) {
+    .fixedBgSec {
+        background-attachment: scroll;
+    }
+}
+
+/* ----------- FIXED_HEADER --------------------------------------------------------------------------- */
+
+/*------------------------------------*
+    $FIXED_HEADER
+    jQuery('.headerWrapper').addClass('fixedHeaderArea');
+
+    -add a padding-top to content div based on height of header section (may need multiple media queries)
+\*------------------------------------*/
+@media(min-width:992px) {
+    .fixedHeaderArea {
+        left: 0;
+        position: fixed;
+        right: 0;
+        z-index: 1030;
+    }
+
+    /* fixed header jump modal fix DEV-12639 */
+    .fixedHeaderArea.modal-open {
+        padding-right: 17px;
+    }
+}
+
+/* ----------- RESPONSIVE BACKGROUND IMAGE-------------------------------------------------------------- */
+.img-background {
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    padding-top: 55%;
+}
+
+.img-background.img-cover {
+    background-size: cover;
+}
+
+.img-background.img-contain {
+    background-size: contain;
+}
+
+/* ----------- PULL CELL ------------------------------------------------------------------------------- */
+.pull-cell {
+    display: table-cell;
+    width: 10000px;
+}
+
+/*------------------------------------*
+    $SERVICE VIDEO ICONS
+\*------------------------------------*/
+/* video */
+.serviceQuickNav a.panel-default {
+    border-right: 1px dashed #ebebeb;
+}
+
+.serviceQuickNav a.panel-default:last-child {
+    border-right: none;
+}
+
+.serviceQuickNav span {
+    background: url("https://cdn.dealeron.com/assets/shared/images/service/block2_bg.png") no-repeat scroll 0 0;
+    /*border-radius: 30px;*/
+    display: block;
+    height: 48px;
+    margin: 0 auto 11px;
+    width: 58px;
+}
+
+.serviceQuickNav .panel-body {
+    color: #252525;
+    font-size: 18px;
+    line-height: 20px;
+}
+
+.serviceQuickNav .panel-footer {
+    font-size: smaller;
+    background-color: transparent;
+    border: none;
+}
+
+.serviceQuickNav #icon01 {
+    background-position: 20px 10px;
+}
+
+.serviceQuickNav #icon02 {
+    background-position: -282px 10px;
+}
+
+.serviceQuickNav #icon03 {
+    background-position: -240px 10px;
+}
+
+.serviceQuickNav #icon04 {
+    background-position: -191px 10px;
+}
+
+.serviceQuickNav #icon05 {
+    background-position: -138px 10px;
+}
+
+.serviceQuickNav #icon06 {
+    background-position: -89px 11px;
+}
+
+.serviceQuickNav #icon07 {
+    background-position: -39px 10px;
+}
+
+/* end video */
+
+
+/* ----------- UNIVERSAL FIXES AND APPLICATIONS - do not remove  ---------------------------------------------------- */
+/*------------------------------------------------------------------------------------------------------------------- */
+.panel-body>table {
+    margin-bottom: 0;
+}
+
+/* ms */
+.btn {
+    white-space: normal;
+}
+
+a:hover {
+    text-decoration: none
+}
+
+a:focus {
+    /*outline: auto !important;*/
+    outline-offset: 1px !important;
+}
+
+a:focus-visible, .btn:focus-visible, button:focus-visible { outline: 3px solid Highlight;} /*Firefox*/
+a:focus-visible, .btn:focus-visible, button:focus-visible { outline: 5px auto -webkit-focus-ring-color !important; outline-offset: 1px !important;} /* Webkit */
+
+
+.checkbox-inline+.checkbox-inline,
+.radio-inline+.radio-inline {
+    margin-left: .5em
+}
+
+.radio-inline label {
+    font-weight: normal;
+}
+
+.container-fluid {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+/* Scrollable map on mobile */
+@media (max-width: 767px) {
+    .mobileMap {
+        padding: 0 15px;
+    }
+}
+
+/* ----------- universal fix / BREADCRUMB */
+.breadcrumb {
+    background-color: transparent;
+    border-radius: 0;
+    font-size: 11px;
+    margin-bottom: 0;
+    padding: 0;
+}
+
+/* ----------- universal fix / CAROUSEL */
+#carousel .carousel-control .fa {
+    font-size: 30px;
+    font-size: 3rem;
+    height: 30px;
+    width: 30px;
+    margin-left: -15px;
+    margin-top: -15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* ie fix DES-13159 */
+}
+
+#content-main .carousel-control .fa-chevron-right {
+    margin-right: -15px;
+}
+
+#content-main .carousel-control .fa-chevron-left,
+#content-main .carousel-control .fa-chevron-right {
+    margin-top: -15px;
+}
+
+#content-main .carousel-control .fa-chevron-right {
+    right: 50%;
+    margin-right: -10px;
+}
+
+#content-main .carousel-control .fa-chevron-left,
+#content-main .carousel-control .fa-chevron-right {
+    position: absolute;
+    top: 50%;
+    z-index: 5;
+    display: inline-block;
+}
+
+/* ADA Spacing */
+.carousel-indicators li { width: 13px; height: 13px; position: relative; margin: 1px 6px; }
+.carousel-indicators .active { width: 13px; height: 13px; margin: 1px 7px; }
+.carousel-indicators li::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 48px; height: 48px; background: transparent; }
+
+/** Safari Fix **/
+.carousel-control.left,
+.carousel-control.right {
+    background-image: none !important;
+}
+
+/* ----------- universal fix / SRP PAGES  */
+.well-extend-wrap {
+    position: relative
+}
+
+.well-extend {
+    /* used on srps */
+    border: none;
+    box-shadow: none
+}
+
+/** Carousel Fade **/
+.carousel-fade .carousel-inner .item {
+    opacity: 0;
+    transition-property: opacity;
+}
+
+.carousel-fade .carousel-inner .active {
+    opacity: 1;
+}
+
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+    left: 0;
+    opacity: 0;
+    z-index: 1;
+}
+
+.carousel-fade .carousel-inner .next.left,
+.carousel-fade .carousel-inner .prev.right {
+    opacity: 1;
+}
+
+.carousel-fade .carousel-control {
+    z-index: 2;
+}
+
+@media all and (transform-3d),
+(-webkit-transform-3d) {
+
+    .carousel-fade .carousel-inner>.item.next,
+    .carousel-fade .carousel-inner>.item.active.right {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+
+    .carousel-fade .carousel-inner>.item.prev,
+    .carousel-fade .carousel-inner>.item.active.left {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+
+    .carousel-fade .carousel-inner>.item.next.left,
+    .carousel-fade .carousel-inner>.item.prev.right,
+    .carousel-fade .carousel-inner>.item.active {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+/* ----------- universal fix / SRP ------------- */
+/* DES-8717 */
+#content-main-inventory .srpVehicle .vehicleImgColumn {
+    margin-bottom: -15em;
+    padding-bottom: 15em;
+}
+
+#content-main .srpVehicle .well-pad-none {
+    overflow: hidden;
+}
+
+#content-main .srpVehicle .vehicleImgColumn.gallery {
+    margin-bottom: -14em;
+    padding-bottom: 15em;
+}
+
+/* Refine Search (without multiselect) DES-13864 */
+.srpRefineSearch #accordion ul li a {
+    background-color: #dddddd;
+    border-radius: 4px;
+    display: inline-block;
+    line-height: 34px;
+    margin-bottom: 5px;
+    padding: 0 12px;
+}
+
+.srpRefineSearch #accordion ul li a:hover {
+    background-color: #d5d5d5;
+}
+
+
+/* ----------- universal fix /  NAV */
+.static-to-nav {
+    position: absolute
+}
+
+.fixed-to-nav {
+    position: fixed
+}
+
+.fixed-to-nav,
+.static-to-nav {
+    z-index: 1010
+}
+
+/* fixes for old snap based nav */
+@media(min-width: 768px) {
+    .navbar-default .navbar-collapse {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    #nav-container.container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+@media (max-width:767px) {
+    #nav .container {
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+.navbar-inverse {
+	color: #fff;
+}
+
+/* Safari Fix - Rob || Changed to "padding-bottom" by TysonK for DEV-21034 */
+/*@media(max-width: 991px) {
+    #navbar-collapse>ul.nav.navbar-nav:last-child {
+        padding-bottom: 6em;
+    }
+}*/
+
+/* ----------- universal fix / CUSTOM PAGES */
+
+@media (max-width:1199px) and (min-width:992px) {
+    #content-main .col-md-3.well .tab-content #hours-display table {
+        font-size: .6em
+    }
+}
+
+#content-main .col-md-3.well .tab-content #hours-display table {
+    font-size: .8em
+}
+
+#content-main .col-md-3.well .tab-content #hours-display table thead {
+    display: none
+}
+
+/* ----------- universal fix / BANNER LAYOUT */
+
+/* BANNER LAYOUT 01 - 25% #BLOCK1 / 75% INTRO WIDGET */
+.carousel-inner>.item>a>img,
+.carousel-inner>.item>img {
+    margin: auto;
+}
+
+/* BANNER LAYOUT 02 - FULL WIDTH INTRO WIDGET WITH BLOCK1 ON TOP LEFT CORNER */
+@media (min-width: 992px) {
+    .bannerLayout02 #block1 {
+        position: absolute;
+        z-index: 28;
+        width: 260px;
+    }
+}
+
+.bannerLayout02 #bannerImg .img-responsive {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* BANNER LAYOUT 03 - 1170 WIDE BANNER WITH BLOCK1 POSITIONED ON TOP */
+
+.bannerLayout03 .carousel-indicators {
+    left: 62%;
+}
+
+@media (min-width: 992px) {
+    .bannerLayout03 #block1 {
+        top: 5px;
+        z-index: 10;
+        position: absolute;
+    }
+
+    .bannerLayout03 #bannerImg .carousel-control.left {
+        left: 25%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .bannerLayout02 #block1 {
+        width: 280px;
+    }
+}
+
+/* ----------- universal fix / BANNER DISCLAIMER BUTTON DEV-7035 */
+
+#bannerImg .banner-disclaimer-btn {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    padding: 1px 5px;
+    z-index: 20;
+    /* changed from 999 /  DES-15966 */
+    font-size: 10px;
+}
+
+#bannerImg .banner-disclaimer-content {
+    font-size: 11px;
+	overflow-y: scroll;
+}
+
+#bannerImg .carousel-inner .popover {
+    top: -10px !important;
+    right: 0 !important;
+    left: auto !important;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0;
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+#bannerImg .carousel-inner .popover>.arrow {
+    display: none;
+}
+
+#bannerImg .carousel-inner .popover-content {
+    line-height: 1em;
+}
+
+/* ----------- universal fix / MODEL BAR (FRONTVIEW IMAGES) */
+.modelBar.frontview .mbThumbTitle {
+    margin-top: 5px;
+}
+
+/* ----------- universal fix / MOBILE BUTTON SIZES (DES-30188) */
+@media(max-width: 767px) {
+
+    .btn-sm,
+    .btn-xs {
+        padding: 12px 12px;
+    }
+}
+
+/* --------------------------------- DO NOT USE WE ARE TRYING TO ELIMINATE ----------------------------------------- */
+
+/* -----------  ???????????????????????????????????????????????????????????????????????????????????????? old rothbard chevy - added to template 617  ---------- */
+.panel-row-group .panel {
+    border-bottom-width: 0;
+    border-radius: 0
+}
+
+.panel-row-group .panel-row:first-child .panel {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-top-width: 1px
+}
+
+.panel-row-group .panel-row:last-child .panel {
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-bottom-width: 1px
+}
+
+.pull-cell {
+    display: table-cell;
+    width: 10000px
+}
+
+/*Sub classes removed DES-46573*/
+
+@media (max-width:767px) {
+
+    /** solution DES-5353 */
+    .modal-body,
+    .modal-footer {
+        padding: 10px;
+    }
+}
+
+/* ------------------------------------------------------------------------------------------------------------------*/
+
+/* ----------- BORDERS - DO NOT USE WE ARE TRYING TO ELIMINATE ---------- */
+.border-vert-x {
+    border-top-width: 0;
+    border-bottom-width: 0
+}
+
+.border-horz-x {
+    border-right-width: 0;
+    border-left-width: 0
+}
+
+.border-top-iso {
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0
+}
+
+.border-right-iso {
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0
+}
+
+.border-bottom-iso {
+    border-top-width: 0;
+    border-right-width: 0;
+    border-left-width: 0
+}
+
+.border-left-iso {
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0
+}
+
+
+
+/*TEST TYSON AND JACK FOR CENTERED MODAL*/
+.modal.modal-v_centered {
+    text-align: center;
+    padding: 0 !important;
+}
+
+.modal.modal-v_centered:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -4px;
+}
+
+.modal.modal-v_centered>.modal-dialog {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+}
+
+/*INTRO SIDE BY SIDE SLIDER*/
+@media (min-width: 1200px) {
+    .opensearch.open>ul.opensearch-suggestions {
+        max-height: 170px;
+        overflow-y: auto;
+    }
+}
+
+/* Fix Firefox interpretation of default font-family for <option> elements */
+@-moz-document url-prefix() {
+    select option { font-family: sans-serif; }
+}
+
+/* ADA customer reviews */
+#customerReviewsPage .sidebarSection.sb-address a[href="/hours.aspx"] {
+    text-decoration: underline;
+}
+
+/* ADA dealeron coupon */
+#dealerOnCoupon #couponFooter span.couponDisclaimer {
+    color:#767676!important;
+}

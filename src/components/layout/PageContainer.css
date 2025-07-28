@@ -1,0 +1,68 @@
+.page-container {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Max Width Variants */
+.page-container--max-width-default {
+  max-width: 1440px;
+}
+
+.page-container--max-width-narrow {
+  max-width: 768px;
+}
+
+.page-container--max-width-wide {
+  max-width: 1440px;
+}
+
+.page-container--max-width-full {
+  max-width: none;
+}
+
+/* Padding Variants */
+.page-container--padding-default {
+  padding: 1rem 1rem;
+}
+
+.page-container--padding-compact {
+  padding: 1rem;
+}
+
+.page-container--padding-spacious {
+  padding: 3rem 1rem;
+}
+
+.page-container--padding-none {
+  padding: 0;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  /* .page-container--padding-default {
+    padding: 1.5rem 0.25rem;
+  } */
+
+  .page-container--padding-compact {
+    padding: 0.75rem;
+  }
+
+  .page-container--padding-spacious {
+    padding: 2rem 0.75rem;
+  }
+}
+
+@media (max-width: 640px) {
+  /* .page-container--padding-default {
+    padding: 1rem 0;
+  } */
+
+  .page-container--padding-compact {
+    padding: 0.5rem;
+  }
+
+  .page-container--padding-spacious {
+    padding: 1.5rem 0.5rem;
+  }
+}
