@@ -14,31 +14,32 @@ const SnippetListPage = () => {
 	const [currentPage, setCurrentPage] = useState(1)
 	const [hasNextPage, setHasNextPage] = useState(false)
 	const [lastDoc, setLastDoc] = useState(null)
-	const [copyMessage, setCopyMessage] = useState('')
 	const [selectedTags, setSelectedTags] = useState([])
+	const [sortBy, setSortBy] = useState('popular') // 'popular' or 'recent'
 
 	const navigate = useNavigate()
 
-	const loadSnippets = async (page = 1, lastCreatedAt = null) => {
+	const loadSnippets = async (page = 1, lastValue = null, currentSortBy = sortBy) => {
 		try {
 			setLoading(true)
 			setError(null)
 
+			const orderByField = currentSortBy === 'recent' ? 'createdAt' : 'voteCount'
 			const options = {
-				orderByField: 'createdAt',
+				orderByField,
 				orderDirection: 'desc',
 				limitCount: perPage + 1,
 			}
 
-			if (lastCreatedAt && page > 1) {
-				options.whereConditions = [{ field: 'createdAt', operator: '<', value: lastCreatedAt }]
+			if (lastValue !== null && page > 1) {
+				options.whereConditions = [{ field: orderByField, operator: '<=', value: lastValue }]
 			}
 
 			const fetchedSnippets = await getSnippets(options)
 
 			if (page === 1) {
 				const allSnippetsData = await getSnippets({
-					orderByField: 'createdAt',
+					orderByField,
 					orderDirection: 'desc',
 				})
 				setAllSnippets(allSnippetsData)
@@ -56,10 +57,10 @@ const SnippetListPage = () => {
 
 			setHasNextPage(hasMore)
 
-			// Store createdAt
+			// Store last value for pagination
 			if (displaySnippets.length > 0) {
 				const lastSnippet = displaySnippets[displaySnippets.length - 1]
-				setLastDoc(lastSnippet.createdAt)
+				setLastDoc(lastSnippet[orderByField])
 			}
 		} catch (err) {
 			console.error('Error loading snippets:', err)
@@ -78,16 +79,11 @@ const SnippetListPage = () => {
 		navigate(`/snippets/${snippet.id}`)
 	}
 
-	const handleCopySuccess = (copiedText) => {
-		setCopyMessage('Code copied to clipboard!')
-		setTimeout(() => setCopyMessage(''), 3000)
-	}
-
 	const handleLoadMore = () => {
 		if (!loading && hasNextPage && lastDoc) {
 			const nextPage = currentPage + 1
 			setCurrentPage(nextPage)
-			loadSnippets(nextPage, lastDoc)
+			loadSnippets(nextPage, lastDoc, sortBy)
 		}
 	}
 
@@ -101,6 +97,17 @@ const SnippetListPage = () => {
 
 	const handleTagsChange = (newSelectedTags) => {
 		setSelectedTags(newSelectedTags)
+	}
+
+	const handleSortChange = (newSortBy) => {
+		if (newSortBy !== sortBy) {
+			setSortBy(newSortBy)
+			setCurrentPage(1)
+			setSnippets([])
+			setAllSnippets([])
+			setLastDoc(null)
+			loadSnippets(1, null, newSortBy)
+		}
 	}
 
 	const getFilteredSnippets = () => {
@@ -126,13 +133,15 @@ const SnippetListPage = () => {
 				<div className='snippet-list-page'>
 					<div className='snippet-list-controls'>
 						<div className='snippet-list-filters'>
-							<TagFilter selectedTags={selectedTags} onTagsChange={handleTagsChange} className='snippet-list-tag-filter' />
+							<TagFilter selectedTags={selectedTags} onTagsChange={handleTagsChange} sortBy={sortBy} onSortChange={handleSortChange} className='snippet-list-tag-filter' />
 						</div>
 					</div>
 
 					<div className='snippet-list-grid'>
 						<LoadingCard variant='snippet' count={perPage} />
 					</div>
+
+					<div className='loading-status'>Loading snippets...</div>
 				</div>
 			</PageContainer>
 		)
@@ -158,17 +167,16 @@ const SnippetListPage = () => {
 	return (
 		<PageContainer>
 			<div className='snippet-list-page'>
-				{copyMessage && <div className='copy-message'>{copyMessage}</div>}
-
 				<div className='snippet-list-controls'>
 					<div className='snippet-list-filters'>
-						<TagFilter selectedTags={selectedTags} onTagsChange={handleTagsChange} className='snippet-list-tag-filter' />
+						<TagFilter selectedTags={selectedTags} onTagsChange={handleTagsChange} sortBy={sortBy} onSortChange={handleSortChange} className='snippet-list-tag-filter' />
 					</div>
 				</div>
 
 				{snippets.length === 0 && !loading ? (
 					<div className='snippet-list-empty'>
 						<h2>No snippets yet</h2>
+						<p>Be the first to share an HTML snippet with the community!</p>
 						<button className='create-snippet-button' onClick={() => navigate('/create')}>
 							Create First Snippet
 						</button>
@@ -184,7 +192,7 @@ const SnippetListPage = () => {
 					<>
 						<div className='snippet-list-grid'>
 							{displayedSnippets.map((snippet) => (
-								<SnippetCard key={snippet.id} snippet={snippet} onClick={handleSnippetClick} onCopy={handleCopySuccess} className='snippet-list-card' livePreview={true} />
+								<SnippetCard key={snippet.id} snippet={snippet} onClick={handleSnippetClick} className='snippet-list-card' livePreview={true} />
 							))}
 
 							{loading && currentPage > 1 && <LoadingCard variant='snippet' count={6} />}

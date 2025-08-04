@@ -43,7 +43,7 @@ export const validateString = (value, options = {}) => {
   };
 };
 
-// Validate HTML content
+// Validate HTML content with script safety checks for authenticated users
 export const validateHtmlContent = (htmlContent) => {
   const errors = [];
 
@@ -58,12 +58,32 @@ export const validateHtmlContent = (htmlContent) => {
     errors.push('HTML content cannot be empty');
   }
 
-  // Check for potentially dangerous content
+  // Check for potentially dangerous content (but allow script tags for authenticated users)
   const dangerousPatterns = [
-    /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi,
     /javascript:/gi,
     /on\w+\s*=/gi,
   ];
+
+  // Check for unsafe script patterns that could affect the global scope
+  const unsafeScriptPatterns = [
+    /document\s*\.\s*(write|createElement|appendChild|insertBefore|removeChild)/gi,
+    /window\s*\.\s*(location|open|close|alert|confirm)/gi,
+    /eval\s*\(/gi,
+    /<script[^>]*src\s*=/gi, // External script sources
+    /fetch\s*\(/gi,
+    /XMLHttpRequest/gi,
+    /localStorage|sessionStorage/gi,
+    /parent\s*\./gi,
+    /top\s*\./gi,
+  ];
+  
+  const hasUnsafeScript = unsafeScriptPatterns.some(pattern => 
+    pattern.test(htmlContent)
+  );
+
+  if (hasUnsafeScript) {
+    errors.push('Script content contains unsafe operations. Only DOM queries and manipulation within the snippet container are allowed.');
+  }
 
   const hasDangerousContent = dangerousPatterns.some(pattern => 
     pattern.test(htmlContent)
@@ -79,14 +99,14 @@ export const validateHtmlContent = (htmlContent) => {
   };
 };
 
-// Sanitize HTML content by removing dangerous elements
+// Sanitize HTML content by removing dangerous elements (but preserve script tags for authenticated users)
 export const sanitizeHtml = (htmlContent) => {
   if (!htmlContent || typeof htmlContent !== 'string') {
     return '';
   }
 
+  // Remove dangerous inline event handlers and javascript: URLs, but keep script tags
   return htmlContent
-    .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
     .replace(/\s*on\w+\s*=\s*"[^"]*"/gi, '')
     .replace(/\s*on\w+\s*=\s*'[^']*'/gi, '')
     .replace(/javascript:/gi, '')

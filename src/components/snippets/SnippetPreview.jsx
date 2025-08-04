@@ -13,6 +13,7 @@ import './SnippetPreview.css'
 
 // Predefined CSS and JavaScript stack to inject into previews
 const INJECTED_STYLES = `
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <link rel="preload" href="/preview/fontawesome-webfont.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="stylesheet" href="/preview/bootstrap.min.css" />
 <link rel="stylesheet" href="/preview/main.css" />
@@ -53,7 +54,23 @@ const INJECTED_SCRIPTS = `
 <script src="/preview/bootstrap.min.js"></script>
 <script src="/preview/modernizr.min.js"></script>
 <script src="/preview/jquery.validate.min.js"></script>
-
+<script>
+// Prevent link navigation while preserving other interactions
+document.addEventListener('DOMContentLoaded', function() {
+  // Disable all link navigation
+  document.addEventListener('click', function(e) {
+    if (e.target.tagName === 'A' || e.target.closest('a')) {
+      e.preventDefault();
+      return false;
+    }
+  }, true);
+  
+  // Also prevent form submissions that might navigate
+  document.addEventListener('submit', function(e) {
+    e.preventDefault();
+    return false;
+  }, true);
+});
 </script>
 `
 
@@ -128,7 +145,7 @@ const SnippetPreview = ({ htmlContent, className = '', height = 300 }) => {
 				{hasError && <span className='preview-status error'>Error loading preview</span>}
 			</div>
 			<div className='preview-container' style={{ height }}>
-				<iframe ref={iframeRef} className='preview-iframe' title='HTML Snippet Preview' sandbox='allow-scripts allow-same-origin' onLoad={handleIframeLoad} onError={handleIframeError} />
+				<iframe ref={iframeRef} className='preview-iframe' title='HTML Snippet Preview' sandbox='allow-scripts allow-same-origin allow-forms allow-modals allow-pointer-lock' onLoad={handleIframeLoad} onError={handleIframeError} />
 			</div>
 		</div>
 	)
