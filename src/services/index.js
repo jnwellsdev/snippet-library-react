@@ -1,13 +1,8 @@
-// Service exports - will be populated as services are created in later tasks
-
 // Firebase services
 export { auth, db } from './firebase'
-
-// Authentication services (Task 2)
+// Authentication services
 export * from './authService';
-
-// Firestore services (Task 3)
+// Firestore database services
 export * from './firestoreService';
-
-// Vote services (Task 9)
+// Vote services
 export * from './voteService';

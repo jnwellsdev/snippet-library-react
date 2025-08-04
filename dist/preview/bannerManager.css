@@ -1,0 +1,257 @@
+/* colors */
+/* The CTA and Main colors are pulled from site templates created by the Design team. These colors vary per OEM or group. */
+/* CTA stands for Call-to-Action. The CTA color is often a bright, eye-catching color like red or light blue, used for links and important buttons. */
+/* The Main color is often a dark, muted color like black or navy blue, used for backgrounds and less important buttons. */
+/* fonts */
+/* breakpoints */
+/* borders */
+/* local variables */
+/* TODO: remove if border color classes are added to site templates */
+/* Construct a media query that applies to multiple ranges of breakpoints. First and last argument must either be a single number or a list of 2 numbers. */
+/* Make sure to give the truncated element a width. If the truncated element has display: flex or inline-flex, add min-width: 0 to the truncated element's immediate parent. If the flex truncated element is nested inside one or more other flex containers, also add min-width: 0 to the nearest ancestor element that does NOT have display: flex or inline-flex */
+/* Single element */
+/* Works well for either single elements, or multiple elements grouped under the same parent */
+/* Remove default styling from button element */
+/* Create a multi-column ul that avoids list items breaking between 2 columns. li { display: inline-block } will force each list item to stay in one column, but also removes the default list item styling (bullets). Adding a bullet character in the ::before, changing the display of the li to inline-flex, and adding a column gap to the li restores the bullet styling. */
+[id^=carouselWithDisclaimer-] {
+  position: relative;
+}
+[id^=carouselWithDisclaimer-] [id^=disclaimerModal-].open {
+  position: absolute;
+  z-index: 29;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+[id^=carouselWithDisclaimer-] [id^=disclaimerModal-].open + [id^=carousel-] .carousel-inner .item.active .open-disclaimer {
+  display: none;
+}
+@media (max-width: 768px) {
+  [id^=carouselWithDisclaimer-] [id^=disclaimerModal-].open {
+    position: fixed;
+    z-index: 1000000000;
+  }
+}
+[id^=carouselWithDisclaimer-] [id^=disclaimerModal-] .banner-disclaimer-btn--disclosure {
+  width: 100%;
+}
+[id^=carouselWithDisclaimer-] [id^=disclaimerModal-] .banner-disclaimer-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  grid-gap: 1em;
+  grid-template-rows: auto auto 1fr;
+  height: fit-content;
+  max-height: 90%;
+  background-color: #ffffff;
+  padding: 2em;
+  font-size: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 2px;
+}
+[id^=carouselWithDisclaimer-] [id^=disclaimerModal-] .banner-disclaimer-content--disclosure {
+  grid-template-rows: auto 1fr;
+  grid-gap: unset;
+  padding: unset;
+}
+[id^=carouselWithDisclaimer-] [id^=disclaimerModal-] .banner-disclaimer-content__title-container {
+  background-color: #ffffff;
+  display: grid;
+  grid-template-columns: 11fr 1fr;
+}
+[id^=carouselWithDisclaimer-] [id^=disclaimerModal-] .banner-disclaimer-content__title-container .title-container__title-disclosure {
+  margin: 0;
+  color: var(--cta-background-color);
+  background-color: unset;
+  margin-top: 0;
+  padding: 0.5em 0.5em 0.5em 0.75em;
+  line-height: unset;
+}
+[id^=carouselWithDisclaimer-] [id^=disclaimerModal-] .banner-disclaimer-content__title-container .title-container__close-btn {
+  width: fit-content;
+  justify-self: end;
+  font-size: 240%;
+  background-color: unset;
+  color: var(--cta-background-color);
+  padding-right: 0.75em;
+}
+[id^=carouselWithDisclaimer-] [id^=disclaimerModal-] .banner-disclaimer-content__title {
+  margin: 0;
+}
+[id^=carouselWithDisclaimer-] [id^=disclaimerModal-] .banner-disclaimer-content__close-btn {
+  width: fit-content;
+  justify-self: end;
+  margin-top: 0.75em;
+}
+[id^=carouselWithDisclaimer-] [id^=disclaimerModal-] .banner-disclaimer-content__text {
+  overflow-y: auto;
+  margin: 0;
+  padding: 2em;
+}
+@media (max-width: 768px) {
+  [id^=carouselWithDisclaimer-] [id^=disclaimerModal-] .banner-disclaimer-content {
+    width: max-content;
+    max-width: 80%;
+  }
+}
+[id^=carouselWithDisclaimer-] [id^=carousel-] .carousel-inner .item {
+  opacity: 0;
+  transition-property: opacity;
+}
+[id^=carouselWithDisclaimer-] [id^=carousel-] .carousel-inner .item [id^=disclaimerBtn-] {
+  position: absolute;
+}
+[id^=carouselWithDisclaimer-] [id^=carousel-] .carousel-inner .item [id^=disclaimerBtn-].open-disclaimer {
+  position: absolute;
+  left: 0;
+}
+[id^=carouselWithDisclaimer-] [id^=carousel-] .carousel-inner .active {
+  opacity: 1;
+}
+[id^=carouselWithDisclaimer-] [id^=carousel-] .carousel-inner .active.left, [id^=carouselWithDisclaimer-] [id^=carousel-] .carousel-inner .active.right {
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+}
+@media all and (transform-3d), (-webkit-transform-3d) {
+  [id^=carouselWithDisclaimer-] [id^=carousel-] .carousel-inner > .item.next,
+  [id^=carouselWithDisclaimer-] [id^=carousel-] .carousel-inner > .item.active.right,
+  [id^=carouselWithDisclaimer-] [id^=carousel-] .carousel-inner > .item.prev,
+  [id^=carouselWithDisclaimer-] [id^=carousel-] .carousel-inner > .item.active.left {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  [id^=carouselWithDisclaimer-] [id^=carousel-] .carousel-inner > .item.next.left,
+  [id^=carouselWithDisclaimer-] [id^=carousel-] .carousel-inner > .item.prev.right,
+  [id^=carouselWithDisclaimer-] [id^=carousel-] .carousel-inner > .item.active {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+[id^=carouselWithDisclaimer-] [id^=carousel-] .indicator-control-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 10px;
+}
+@media (min-width: 768px) {
+  [id^=carouselWithDisclaimer-] [id^=carousel-] .indicator-control-container[carousel-has-play-pause-control] {
+    column-gap: 15px;
+  }
+}
+[id^=carouselWithDisclaimer-] [id^=carousel-] .indicator-control-container .carousel-indicators {
+  position: unset;
+  width: unset;
+  margin: 0;
+}
+[id^=carouselWithDisclaimer-] [id^=carousel-] .indicator-control-container .carousel-indicators .slideIndicator {
+  display: none;
+  padding: 0;
+}
+@media (min-width: 768px) {
+  [id^=carouselWithDisclaimer-] [id^=carousel-] .indicator-control-container .carousel-indicators .slideIndicator {
+    display: inline-block;
+  }
+}
+[id^=carouselWithDisclaimer-] [id^=carousel-] .indicator-control-container .carousel-indicators .slideIndicator:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+[id^=carouselWithDisclaimer-] [id^=carousel-] .indicator-control-container .carousel-indicators .slide-indicator--round {
+  border-radius: 25px;
+  padding: 8px 11px !important;
+  background-color: rgba(0, 0, 0, 0.1);
+  font-weight: bold;
+  color: #FFF;
+  cursor: pointer;
+  margin: 0;
+  border-color: rgba(255, 255, 255, 0.3019607843);
+  line-height: 12px !important;
+  text-indent: 0 !important;
+  width: auto;
+  height: auto;
+}
+[id^=carouselWithDisclaimer-] [id^=carousel-] .indicator-control-container .carousel-indicators .slide-indicator--square {
+  border-radius: 0;
+  padding: 8px 11px !important;
+  background-color: rgba(0, 0, 0, 0.1);
+  font-weight: bold;
+  color: #FFF;
+  cursor: pointer;
+  margin: 0;
+  border-color: rgba(255, 255, 255, 0.3019607843);
+  line-height: 12px !important;
+  text-indent: 0 !important;
+  width: auto;
+  height: auto;
+}
+[id^=carouselWithDisclaimer-] [id^=carousel-] .indicator-control-container .carousel-controls {
+  margin: 0;
+}
+[id^=carouselWithDisclaimer-] [id^=carousel-] .indicator-control-container .carousel-controls .carousel-control-button {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 6px 9px !important;
+  color: #FFF;
+  cursor: pointer;
+  margin: 0;
+  border: 1px solid #fff;
+  border-color: rgba(255, 255, 255, 0.3);
+  border-radius: 25px;
+  line-height: 12px !important;
+  text-indent: 0 !important;
+  width: auto;
+  height: auto;
+  font-size: 13px;
+  text-align: center;
+}
+[id^=carouselWithDisclaimer-] [id^=carousel-] .indicator-control-container .carousel-controls .carousel-control-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+[id^=carouselWithDisclaimer-] [id^=carousel-] .indicator-control-container .carousel-controls--square .carousel-control-button {
+  border-radius: 0;
+}
+[id^=carouselWithDisclaimer-] [id^=carousel-] .carousel-navigation-controls .carousel-control {
+  top: 40px !important;
+  bottom: 40px !important;
+  border: none;
+  background-color: unset;
+}
+[id^=carouselWithDisclaimer-] [id^=carousel-] [id^=hiddenPlayPauseControl-] {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  cursor: none;
+  position: absolute;
+  left: 0;
+  bottom: 10px;
+}
+[id^=carouselWithDisclaimer-] [id^=slideChangeReader-] {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+#bannerImg .banner-disclaimer-btn--disclosure {
+  width: 100%;
+  position: unset;
+}
+#bannerImg .banner-disclaimer-content {
+  overflow: unset;
+}
+
+/*# sourceMappingURL=bannerManager.css.map */

@@ -1,9 +1,5 @@
 import './PageContainer.css'
 
-/**
- * Consistent page wrapper component for styling and layout
- * Provides consistent padding, max-width, and responsive behavior
- */
 function PageContainer({ 
   children, 
   className = '', 

@@ -1,4 +1,3 @@
-// Firestore database service functions
 import { 
   collection, 
   doc, 
@@ -28,14 +27,7 @@ export const COLLECTIONS = {
   VOTES: 'votes',
 };
 
-// Generic CRUD Operations
-
-/**
- * Create a new document in a collection
- * @param {string} collectionName - Name of the collection
- * @param {Object} data - Document data
- * @returns {Promise<string>} Document ID
- */
+// Create a new document in a collection
 export const createDocument = async (collectionName, data) => {
   const docRef = await addDoc(collection(db, collectionName), {
     ...data,
@@ -45,12 +37,7 @@ export const createDocument = async (collectionName, data) => {
   return docRef.id;
 };
 
-/**
- * Get a document by ID
- * @param {string} collectionName - Name of the collection
- * @param {string} id - Document ID
- * @returns {Promise<Object|null>} Document data or null if not found
- */
+// Get a document by ID
 export const getDocument = async (collectionName, id) => {
   const docRef = doc(db, collectionName, id);
   const docSnap = await getDoc(docRef);
@@ -61,13 +48,7 @@ export const getDocument = async (collectionName, id) => {
   return null;
 };
 
-/**
- * Update a document
- * @param {string} collectionName - Name of the collection
- * @param {string} id - Document ID
- * @param {Object} data - Updated data
- * @returns {Promise<void>}
- */
+// Update a document
 export const updateDocument = async (collectionName, id, data) => {
   const docRef = doc(db, collectionName, id);
   await updateDoc(docRef, {
@@ -76,23 +57,13 @@ export const updateDocument = async (collectionName, id, data) => {
   });
 };
 
-/**
- * Delete a document
- * @param {string} collectionName - Name of the collection
- * @param {string} id - Document ID
- * @returns {Promise<void>}
- */
+// Delete a document
 export const deleteDocument = async (collectionName, id) => {
   const docRef = doc(db, collectionName, id);
   await deleteDoc(docRef);
 };
 
-/**
- * Get collection with query options
- * @param {string} collectionName - Name of the collection
- * @param {Object} options - Query options
- * @returns {Promise<Array>} Array of documents
- */
+// Get collection with query options
 export const getCollection = async (collectionName, options = {}) => {
   const {
     whereConditions = [],
@@ -131,13 +102,7 @@ export const getCollection = async (collectionName, options = {}) => {
   }));
 };
 
-// User-specific operations
-
-/**
- * Create or update user document
- * @param {User} user - User instance
- * @returns {Promise<string>} User ID
- */
+// Create or update user document
 export const createOrUpdateUser = async (user) => {
   const validation = user.validate();
   if (!validation.isValid) {
@@ -169,11 +134,7 @@ export const createOrUpdateUser = async (user) => {
   }
 };
 
-/**
- * Get user by ID
- * @param {string} userId - User ID
- * @returns {Promise<User|null>} User instance or null
- */
+// Get user by ID
 export const getUser = async (userId) => {
   const userData = await getDocument(COLLECTIONS.USERS, userId);
   if (!userData) return null;
@@ -181,13 +142,7 @@ export const getUser = async (userId) => {
   return User.fromFirestore(userData.id, userData);
 };
 
-// Snippet-specific operations
-
-/**
- * Create a new snippet
- * @param {Snippet} snippet - Snippet instance
- * @returns {Promise<string>} Snippet ID
- */
+// Create a new snippet
 export const createSnippet = async (snippet) => {
   const validation = snippet.validate();
   if (!validation.isValid) {
@@ -204,11 +159,7 @@ export const createSnippet = async (snippet) => {
   return await createDocument(COLLECTIONS.SNIPPETS, snippetData);
 };
 
-/**
- * Get snippet by ID
- * @param {string} snippetId - Snippet ID
- * @returns {Promise<Snippet|null>} Snippet instance or null
- */
+// Get snippet by ID
 export const getSnippet = async (snippetId) => {
   const snippetData = await getDocument(COLLECTIONS.SNIPPETS, snippetId);
   if (!snippetData) return null;
@@ -216,12 +167,7 @@ export const getSnippet = async (snippetId) => {
   return Snippet.fromFirestore(snippetData.id, snippetData);
 };
 
-/**
- * Update snippet
- * @param {string} snippetId - Snippet ID
- * @param {Object} updates - Fields to update
- * @returns {Promise<void>}
- */
+// Update snippet
 export const updateSnippet = async (snippetId, updates) => {
   // Format tags to title case before saving if tags are being updated
   if (updates.tags) {
@@ -234,30 +180,18 @@ export const updateSnippet = async (snippetId, updates) => {
   await updateDocument(COLLECTIONS.SNIPPETS, snippetId, updates);
 };
 
-/**
- * Delete snippet
- * @param {string} snippetId - Snippet ID
- * @returns {Promise<void>}
- */
+// Delete snippet
 export const deleteSnippet = async (snippetId) => {
   await deleteDocument(COLLECTIONS.SNIPPETS, snippetId);
 };
 
-/**
- * Get snippets with pagination and filtering
- * @param {Object} options - Query options
- * @returns {Promise<Array<Snippet>>} Array of Snippet instances
- */
+// Get snippets with pagination and filtering
 export const getSnippets = async (options = {}) => {
   const snippetsData = await getCollection(COLLECTIONS.SNIPPETS, options);
   return snippetsData.map(data => Snippet.fromFirestore(data.id, data));
 };
 
-/**
- * Get top-voted snippets
- * @param {number} limitCount - Number of snippets to return
- * @returns {Promise<Array<Snippet>>} Array of top-voted snippets
- */
+// Get top-voted snippets
 export const getTopSnippets = async (limitCount = 10) => {
   const options = {
     orderByField: 'voteCount',
@@ -268,12 +202,7 @@ export const getTopSnippets = async (limitCount = 10) => {
   return await getSnippets(options);
 };
 
-/**
- * Get snippets by author
- * @param {string} authorId - Author user ID
- * @param {Object} options - Additional query options
- * @returns {Promise<Array<Snippet>>} Array of author's snippets
- */
+// Get snippets by author
 export const getSnippetsByAuthor = async (authorId, options = {}) => {
   const queryOptions = {
     ...options,
@@ -286,10 +215,7 @@ export const getSnippetsByAuthor = async (authorId, options = {}) => {
   return await getSnippets(queryOptions);
 };
 
-/**
- * Get all unique tags from snippets
- * @returns {Promise<Array<string>>} Array of unique tags
- */
+// Get all unique tags from snippets
 export const getAllTags = async () => {
   const snippets = await getSnippets();
   const allTags = snippets.reduce((tags, snippet) => {
@@ -307,16 +233,10 @@ export const getAllTags = async () => {
     return tags;
   }, []);
   
-  return allTags.sort(); // Sort alphabetically
+  return allTags.sort();
 };
 
-// Vote-specific operations
-
-/**
- * Create or toggle a vote
- * @param {Vote} vote - Vote instance
- * @returns {Promise<{action: string, voteId: string}>} Action performed and vote ID
- */
+// Create or toggle a vote
 export const toggleVote = async (vote) => {
   const validation = vote.validate();
   if (!validation.isValid) {
@@ -362,12 +282,7 @@ export const toggleVote = async (vote) => {
   });
 };
 
-/**
- * Get user's vote for a snippet
- * @param {string} userId - User ID
- * @param {string} snippetId - Snippet ID
- * @returns {Promise<Vote|null>} Vote instance or null
- */
+// Get user's vote for a snippet
 export const getUserVote = async (userId, snippetId) => {
   const voteId = `${userId}_${snippetId}`;
   const voteData = await getDocument(COLLECTIONS.VOTES, voteId);
@@ -377,11 +292,7 @@ export const getUserVote = async (userId, snippetId) => {
   return Vote.fromFirestore(voteData.id, voteData);
 };
 
-/**
- * Get votes for a snippet
- * @param {string} snippetId - Snippet ID
- * @returns {Promise<Array<Vote>>} Array of votes
- */
+// Get votes for a snippet
 export const getSnippetVotes = async (snippetId) => {
   const options = {
     whereConditions: [
@@ -393,14 +304,7 @@ export const getSnippetVotes = async (snippetId) => {
   return votesData.map(data => Vote.fromFirestore(data.id, data));
 };
 
-// Real-time listeners
-
-/**
- * Listen to snippet changes
- * @param {string} snippetId - Snippet ID
- * @param {Function} callback - Callback function
- * @returns {Function} Unsubscribe function
- */
+// Listen to snippet changes
 export const listenToSnippet = (snippetId, callback) => {
   const snippetRef = doc(db, COLLECTIONS.SNIPPETS, snippetId);
   
@@ -414,12 +318,7 @@ export const listenToSnippet = (snippetId, callback) => {
   });
 };
 
-/**
- * Listen to snippets collection changes
- * @param {Object} options - Query options
- * @param {Function} callback - Callback function
- * @returns {Function} Unsubscribe function
- */
+// Listen to snippets collection changes
 export const listenToSnippets = (options = {}, callback) => {
   const {
     whereConditions = [],

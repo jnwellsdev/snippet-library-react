@@ -1,5 +1,3 @@
-// Authentication service functions
-
 import {
   sendSignInLinkToEmail,
   signInWithEmailLink,
@@ -10,21 +8,16 @@ import {
 import { auth } from './firebase'
 import { logError, createError, ERROR_TYPES } from '../utils/errorHandling'
 
-// Action code settings for magic link
 const actionCodeSettings = {
   url: window.location.origin,
-  handleCodeInApp: true,
+  handleCodeInApp: true
 }
 
-/**
- * Send magic link to user's email
- * @param {string} email - User's email address
- * @returns {Promise<void>}
- */
+// Send magic link to user's email
 export const sendMagicLink = async (email) => {
   try {
     await sendSignInLinkToEmail(auth, email, actionCodeSettings)
-    // Store email in localStorage for sign-in completion
+    // store email in localStorage
     localStorage.setItem('emailForSignIn', email)
     return { success: true }
   } catch (error) {
@@ -39,12 +32,7 @@ export const sendMagicLink = async (email) => {
   }
 }
 
-/**
- * Complete sign-in with magic link
- * @param {string} email - User's email address
- * @param {string} emailLink - The sign-in link from email
- * @returns {Promise<User>}
- */
+// Complete sign-in with magic link
 export const signInWithMagicLink = async (email, emailLink) => {
   try {
     if (!isSignInWithEmailLink(auth, emailLink)) {
@@ -69,7 +57,6 @@ export const signInWithMagicLink = async (email, emailLink) => {
       throw error
     }
     
-    // Otherwise, enhance the Firebase error
     const enhancedError = createError(
       getAuthErrorMessage(error.code),
       error.code,
@@ -80,26 +67,17 @@ export const signInWithMagicLink = async (email, emailLink) => {
   }
 }
 
-/**
- * Check if current URL is a sign-in link
- * @returns {boolean}
- */
+// Check if current URL is a sign-in link
 export const isSignInLink = () => {
   return isSignInWithEmailLink(auth, window.location.href)
 }
 
-/**
- * Get stored email for sign-in completion
- * @returns {string|null}
- */
+// Get stored email for sign-in completion
 export const getStoredEmailForSignIn = () => {
   return localStorage.getItem('emailForSignIn')
 }
 
-/**
- * Sign out current user
- * @returns {Promise<void>}
- */
+// Sign out current user
 export const signOut = async () => {
   try {
     await firebaseSignOut(auth)
@@ -117,28 +95,17 @@ export const signOut = async () => {
   }
 }
 
-/**
- * Get current authenticated user
- * @returns {User|null}
- */
+// Get current authenticated user
 export const getCurrentUser = () => {
   return auth.currentUser
 }
 
-/**
- * Listen to authentication state changes
- * @param {function} callback - Callback function to handle auth state changes
- * @returns {function} Unsubscribe function
- */
+// Listen to authentication state changes
 export const onAuthStateChange = (callback) => {
   return onAuthStateChanged(auth, callback)
 }
 
-/**
- * Convert Firebase auth error codes to user-friendly messages
- * @param {string} errorCode - Firebase error code
- * @returns {string} User-friendly error message
- */
+// Convert Firebase auth error codes to user-friendly messages
 const getAuthErrorMessage = (errorCode) => {
   switch (errorCode) {
     case 'auth/invalid-email':
@@ -153,6 +120,8 @@ const getAuthErrorMessage = (errorCode) => {
       return 'Invalid or expired sign-in link'
     case 'auth/expired-action-code':
       return 'Sign-in link has expired. Please request a new one'
+    case 'invalid-sign-in-link':
+      return 'Invalid sign-in link'
     default:
       return 'An error occurred during authentication'
   }

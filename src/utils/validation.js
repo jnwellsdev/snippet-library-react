@@ -1,27 +1,10 @@
-/**
- * Validation utilities for the HTML snippet sharing application
- */
-
-/**
- * Validate email format
- * @param {string} email
- * @returns {boolean}
- */
 export const isValidEmail = (email) => {
   if (!email || typeof email !== 'string') return false;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
 };
 
-/**
- * Validate string field with length constraints
- * @param {string} value
- * @param {Object} options - Validation options
- * @param {number} options.minLength - Minimum length (default: 1)
- * @param {number} options.maxLength - Maximum length (default: Infinity)
- * @param {boolean} options.required - Whether field is required (default: true)
- * @returns {Object} Validation result
- */
+// Validate string field with length constraints
 export const validateString = (value, options = {}) => {
   const { minLength = 1, maxLength = Infinity, required = true } = options;
   const errors = [];
@@ -60,11 +43,7 @@ export const validateString = (value, options = {}) => {
   };
 };
 
-/**
- * Validate HTML content
- * @param {string} htmlContent
- * @returns {Object} Validation result
- */
+// Validate HTML content
 export const validateHtmlContent = (htmlContent) => {
   const errors = [];
 
@@ -100,11 +79,7 @@ export const validateHtmlContent = (htmlContent) => {
   };
 };
 
-/**
- * Sanitize HTML content by removing dangerous elements
- * @param {string} htmlContent
- * @returns {string} Sanitized HTML
- */
+// Sanitize HTML content by removing dangerous elements
 export const sanitizeHtml = (htmlContent) => {
   if (!htmlContent || typeof htmlContent !== 'string') {
     return '';
@@ -119,14 +94,7 @@ export const sanitizeHtml = (htmlContent) => {
     .replace(/\s+>/g, '>');
 };
 
-/**
- * Validate array of strings (for tags)
- * @param {Array} array
- * @param {Object} options - Validation options
- * @param {number} options.maxItems - Maximum number of items
- * @param {number} options.maxItemLength - Maximum length per item
- * @returns {Object} Validation result
- */
+// Validate array of strings (for tags)
 export const validateStringArray = (array, options = {}) => {
   const { maxItems = 10, maxItemLength = 50 } = options;
   const errors = [];
@@ -158,12 +126,7 @@ export const validateStringArray = (array, options = {}) => {
   };
 };
 
-/**
- * Validate Firebase Timestamp or Date object
- * @param {*} timestamp
- * @param {boolean} required
- * @returns {Object} Validation result
- */
+// Validate Firebase Timestamp or Date object
 export const validateTimestamp = (timestamp, required = false) => {
   const errors = [];
 

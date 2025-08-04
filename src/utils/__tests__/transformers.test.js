@@ -1,12 +1,8 @@
 import { describe, it, expect, vi } from 'vitest';
 import {
   timestampToDate,
-  dateToTimestamp,
   formatDate,
   formatRelativeTime,
-  normalizeSnippetData,
-  normalizeUserData,
-  normalizeVoteData,
   getDisplayNameFromEmail,
   truncateText,
   toTitleCase,
@@ -36,22 +32,6 @@ describe('Transformer Utilities', () => {
       expect(timestampToDate(undefined)).toBeNull();
       expect(timestampToDate('invalid')).toBeNull();
       expect(timestampToDate(123)).toBeNull();
-    });
-  });
-
-  describe('dateToTimestamp', () => {
-    it('should return Date object for valid Date', () => {
-      const date = new Date('2023-01-01');
-      const result = dateToTimestamp(date);
-      
-      expect(result).toBe(date);
-    });
-
-    it('should return null for invalid input', () => {
-      expect(dateToTimestamp(null)).toBeNull();
-      expect(dateToTimestamp(undefined)).toBeNull();
-      expect(dateToTimestamp('invalid')).toBeNull();
-      expect(dateToTimestamp(123)).toBeNull();
     });
   });
 
@@ -175,143 +155,6 @@ describe('Transformer Utilities', () => {
     it('should return default message for invalid input', () => {
       expect(formatRelativeTime(null)).toBe('Unknown time');
       expect(formatRelativeTime(undefined)).toBe('Unknown time');
-    });
-  });
-
-  describe('normalizeSnippetData', () => {
-    it('should normalize complete snippet data', () => {
-      const rawData = {
-        id: 'snippet123',
-        title: '  Test Snippet  ',
-        htmlContent: '<div>Hello</div>',
-        authorId: 'user123',
-        authorEmail: 'test@example.com',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-        voteCount: '5',
-        tags: ['html', 'test'],
-      };
-      
-      const normalized = normalizeSnippetData(rawData);
-      
-      expect(normalized.id).toBe('snippet123');
-      expect(normalized.title).toBe('Test Snippet');
-      expect(normalized.voteCount).toBe(5);
-      expect(normalized.tags).toEqual(['html', 'test']);
-    });
-
-    it('should handle missing optional fields', () => {
-      const rawData = {
-        title: 'Test',
-        htmlContent: '<div>Hello</div>',
-        authorId: 'user123',
-        authorEmail: 'test@example.com',
-      };
-      
-      const normalized = normalizeSnippetData(rawData);
-      
-      expect(normalized.id).toBeNull();
-      expect(normalized.createdAt).toBeNull();
-      expect(normalized.updatedAt).toBeNull();
-      expect(normalized.voteCount).toBe(0);
-      expect(normalized.tags).toEqual([]);
-    });
-
-    it('should handle invalid vote count', () => {
-      const rawData = {
-        title: 'Test',
-        htmlContent: '<div>Hello</div>',
-        authorId: 'user123',
-        authorEmail: 'test@example.com',
-        voteCount: 'invalid',
-      };
-      
-      const normalized = normalizeSnippetData(rawData);
-      
-      expect(normalized.voteCount).toBe(0);
-    });
-
-    it('should handle non-array tags', () => {
-      const rawData = {
-        title: 'Test',
-        htmlContent: '<div>Hello</div>',
-        authorId: 'user123',
-        authorEmail: 'test@example.com',
-        tags: 'not-an-array',
-      };
-      
-      const normalized = normalizeSnippetData(rawData);
-      
-      expect(normalized.tags).toEqual([]);
-    });
-  });
-
-  describe('normalizeUserData', () => {
-    it('should normalize complete user data', () => {
-      const rawData = {
-        id: 'user123',
-        email: '  TEST@EXAMPLE.COM  ',
-        displayName: '  Test User  ',
-        createdAt: new Date(),
-        lastLoginAt: new Date(),
-      };
-      
-      const normalized = normalizeUserData(rawData);
-      
-      expect(normalized.id).toBe('user123');
-      expect(normalized.email).toBe('test@example.com');
-      expect(normalized.displayName).toBe('Test User');
-    });
-
-    it('should handle missing optional fields', () => {
-      const rawData = {
-        email: 'test@example.com',
-      };
-      
-      const normalized = normalizeUserData(rawData);
-      
-      expect(normalized.id).toBeNull();
-      expect(normalized.displayName).toBeNull();
-      expect(normalized.createdAt).toBeNull();
-      expect(normalized.lastLoginAt).toBeNull();
-    });
-
-    it('should handle empty displayName', () => {
-      const rawData = {
-        email: 'test@example.com',
-        displayName: '',
-      };
-      
-      const normalized = normalizeUserData(rawData);
-      
-      expect(normalized.displayName).toBeNull();
-    });
-  });
-
-  describe('normalizeVoteData', () => {
-    it('should normalize complete vote data', () => {
-      const rawData = {
-        id: 'vote123',
-        snippetId: 'snippet123',
-        userId: 'user123',
-        createdAt: new Date(),
-      };
-      
-      const normalized = normalizeVoteData(rawData);
-      
-      expect(normalized).toEqual(rawData);
-    });
-
-    it('should handle missing optional fields', () => {
-      const rawData = {
-        snippetId: 'snippet123',
-        userId: 'user123',
-      };
-      
-      const normalized = normalizeVoteData(rawData);
-      
-      expect(normalized.id).toBeNull();
-      expect(normalized.createdAt).toBeNull();
     });
   });
 

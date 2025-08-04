@@ -1,11 +1,11 @@
-# DOSnip - HTML Snippet Library
+# HTML Snippet Library
 
-## React
+## [React](https://react.dev)
 
-## Vite
+## [Vite](https://vitejs.dev)
 
-## Firebase
+## [Firebase](https://firebase.google.com)
 
-## Radix UI
+## [Radix UI](https://www.radix-ui.com)
 
-## PrismJS
+## [PrismJS](https://prismjs.com)

@@ -1,389 +1,385 @@
-/* SnippetListPage Styles */
-
 .snippet-list-page {
-  width: 100%;
-  max-width: 1280px;
-  margin: 0 auto;
-  min-height: calc(100vh - 66px);
+	width: 100%;
+	max-width: 1280px;
+	margin: 0 auto;
+	min-height: calc(100vh - 66px);
 }
 
 /* Controls Section */
 .snippet-list-controls {
-  margin-bottom: 1rem;
-  height: 34px;
+	margin-bottom: 1rem;
+	height: 34px;
 }
 
 .snippet-list-title {
-  margin: 0 0.25rem 1rem 0;
-  line-height: 2;
-  height: 34px;
-  text-align: right;
+	margin: 0 0.25rem 1rem 0;
+	line-height: 1.85;
+	height: 34px;
+	font-size: 1.15rem;
 }
 
 .snippet-list-header {
-  text-align: center;
-  margin-bottom: 2rem;
+	text-align: center;
+	margin-bottom: 2rem;
 }
 
 .snippet-list-header h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--color-text-primary);
-  margin-bottom: 0.5rem;
+	font-size: 2.5rem;
+	font-weight: 700;
+	color: var(--color-text-primary);
+	margin-bottom: 0.5rem;
 }
 
 .snippet-list-header p {
-  font-size: 1.1rem;
-  color: var(--color-text-secondary);
-  margin: 0;
+	font-size: 1.1rem;
+	color: var(--color-text-secondary);
+	margin: 0;
 }
 
 /* Filter Controls */
 .snippet-list-filters {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 1rem;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	gap: 1rem;
 }
 
 .filter-status {
-  font-size: 0.875rem;
-  color: var(--text-muted);
-  text-align: center;
-  padding: 0.5rem 1rem;
-  background: rgba(var(--primary-color-rgb), 0.1);
-  border-radius: 0.375rem;
-  border: 1px solid rgba(var(--primary-color-rgb), 0.2);
+	font-size: 0.875rem;
+	color: var(--text-muted);
+	text-align: center;
+	padding: 0.5rem 1rem;
+	background: rgba(var(--primary-color-rgb), 0.1);
+	border-radius: 0.375rem;
+	border: 1px solid rgba(var(--primary-color-rgb), 0.2);
 }
 
 .filter-tag {
-  font-weight: 500;
-  color: var(--primary-color);
+	font-weight: 500;
+	color: var(--primary-color);
 }
 
 /* Copy Message */
 .copy-message {
-  position: fixed;
-  top: 2rem;
-  right: 2rem;
-  background: var(--green-9);
-  color: var(white);
-  padding: 0.75rem 1rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 4px 12px var(--green-a6);
-  z-index: 1000;
-  animation: slideInRight 0.3s ease-out;
+	position: fixed;
+	top: 2rem;
+	right: 2rem;
+	background: var(--green-9);
+	color: var(white);
+	padding: 0.75rem 1rem;
+	border-radius: 0.5rem;
+	box-shadow: 0 4px 12px var(--green-a6);
+	z-index: 1000;
+	animation: slideInRight 0.3s ease-out;
 }
 
 @keyframes slideInRight {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
+	from {
+		transform: translateX(100%);
+		opacity: 0;
+	}
+	to {
+		transform: translateX(0);
+		opacity: 1;
+	}
 }
 
 /* Loading State - now uses skeleton cards instead of spinner */
 .snippet-list-loading {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 4rem 2rem;
-  text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 4rem 2rem;
+	text-align: center;
 }
 
 /* Legacy loading spinner - kept for other potential uses */
 .loading-spinner {
-  width: 3rem;
-  height: 3rem;
-  border: 3px solid var(--border-color);
-  border-top: 3px solid var(--gray-9);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin-bottom: 1rem;
+	width: 3rem;
+	height: 3rem;
+	border: 3px solid var(--border-color);
+	border-top: 3px solid var(--gray-9);
+	border-radius: 50%;
+	animation: spin 1s linear infinite;
+	margin-bottom: 1rem;
 }
 
 @keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
 }
 
 .snippet-list-loading p {
-  color: var(--color-text-secondary);
-  font-size: 1.1rem;
+	color: var(--color-text-secondary);
+	font-size: 1.1rem;
 }
 
 /* Error State */
 .snippet-list-error {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 4rem 2rem;
-  text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 4rem 2rem;
+	text-align: center;
 }
 
 .error-icon {
-  font-size: 4rem;
-  margin-bottom: 1rem;
+	font-size: 4rem;
+	margin-bottom: 1rem;
 }
 
 .snippet-list-error h2 {
-  font-size: 1.5rem;
-  color: var(--orange-9);
-  margin-bottom: 0.5rem;
+	font-size: 1.5rem;
+	color: var(--orange-9);
+	margin-bottom: 0.5rem;
 }
 
 .snippet-list-error p {
-  color: var(--color-text-secondary);
-  margin-bottom: 2rem;
-  max-width: 400px;
+	color: var(--color-text-secondary);
+	margin-bottom: 2rem;
+	max-width: 400px;
 }
 
 .retry-button {
-  background: var(--gray-9);
-  color: var(--gray-9-contrast);
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.2s;
+	background: var(--gray-9);
+	color: var(--gray-9-contrast);
+	border: none;
+	padding: 0.75rem 1.5rem;
+	border-radius: 0.5rem;
+	font-size: 1rem;
+	font-weight: 500;
+	cursor: pointer;
+	transition: background-color 0.2s;
 }
 
 .retry-button:hover {
-  background: var(--gray-10);
+	background: var(--gray-10);
 }
 
 .retry-button:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+	outline: none;
+	box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
 }
 
 /* Empty State */
 .snippet-list-empty {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 4rem 2rem;
-  text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 4rem 2rem;
+	text-align: center;
 }
 
 .empty-icon {
-  font-size: 4rem;
-  margin-bottom: 1rem;
+	font-size: 4rem;
+	margin-bottom: 1rem;
 }
 
 .snippet-list-empty h2 {
-  font-size: 1.5rem;
-  color: var(--color-text-primary);
-  margin-bottom: 0.5rem;
+	font-size: 1.5rem;
+	color: var(--color-text-primary);
+	margin-bottom: 0.5rem;
 }
 
 .snippet-list-empty p {
-  color: var(--color-text-secondary);
-  margin-bottom: 2rem;
-  max-width: 400px;
+	color: var(--color-text-secondary);
+	margin-bottom: 2rem;
+	max-width: 400px;
 }
 
 .create-snippet-button {
-  background: var(--green-9);
-  color: var(white);
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.2s;
+	background: var(--green-9);
+	color: var(white);
+	border: none;
+	padding: 0.75rem 1.5rem;
+	border-radius: 0.5rem;
+	font-size: 1rem;
+	font-weight: 500;
+	cursor: pointer;
+	transition: background-color 0.2s;
 }
 
 .create-snippet-button:hover {
-  background: var(--green-10);
+	background: var(--green-10);
 }
 
 .create-snippet-button:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.3);
+	outline: none;
+	box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.3);
 }
 
 /* Snippet Grid */
 .snippet-list-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 3rem;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+	gap: 1.5rem;
+	margin-bottom: 3rem;
 }
 
 .snippet-list-card {
-  transition:
-    transform 0.2s,
-    box-shadow 0.2s;
+	transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .snippet-list-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+	transform: translateY(-2px);
+	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
 /* Pagination */
 .snippet-list-pagination {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 2rem;
+	display: flex;
+	justify-content: center;
+	margin-bottom: 2rem;
 }
 
 .load-more-button {
-  background: var(--gray-9);
-  color: var(--gray-9-contrast);
-  border: none;
-  padding: 0.75rem 2rem;
-  border-radius: 0.5rem;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.2s;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+	background: var(--gray-9);
+	color: var(--gray-9-contrast);
+	border: none;
+	padding: 0.75rem 2rem;
+	border-radius: 0.5rem;
+	font-size: 1rem;
+	font-weight: 500;
+	cursor: pointer;
+	transition: background-color 0.2s;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
 }
 
 .load-more-button:hover:not(:disabled) {
-  background: var(--gray-10);
+	background: var(--gray-10);
 }
 
 .load-more-button:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+	outline: none;
+	box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
 }
 
 .load-more-button:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
+	opacity: 0.7;
+	cursor: not-allowed;
 }
 
 .button-spinner {
-  width: 1rem;
-  height: 1rem;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  border-top: 2px solid white;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
+	width: 1rem;
+	height: 1rem;
+	border: 2px solid rgba(255, 255, 255, 0.3);
+	border-top: 2px solid white;
+	border-radius: 50%;
+	animation: spin 1s linear infinite;
 }
 
 /* End Message */
 .snippet-list-end {
-  text-align: center;
-  padding: 2rem;
-  color: var(--color-text-secondary);
-  display: none;
+	text-align: center;
+	padding: 2rem;
+	color: var(--color-text-secondary);
+	display: none;
 }
 
 .snippet-list-end p {
-  margin-bottom: 0.5rem;
+	margin-bottom: 0.5rem;
 }
 
 .create-snippet-link {
-  background: none;
-  border: none;
-  color: var(--gray-9);
-  text-decoration: underline;
-  cursor: pointer;
-  font-size: inherit;
-  padding: 0;
+	background: none;
+	border: none;
+	color: var(--gray-9);
+	text-decoration: underline;
+	cursor: pointer;
+	font-size: inherit;
+	padding: 0;
 }
 
 .create-snippet-link:hover {
-  color: var(--gray-10);
+	color: var(--gray-10);
 }
 
 .create-snippet-link:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
-  border-radius: 2px;
+	outline: none;
+	box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+	border-radius: 2px;
 }
 
 /* Inline Error */
 .snippet-list-error-inline {
-  text-align: center;
-  padding: 1rem;
-  color: var(--orange-10);
-  background: var(--orange-2);
-  border: 1px solid var(--orange-6);
-  border-radius: 0.5rem;
-  margin-top: 2rem;
+	text-align: center;
+	padding: 1rem;
+	color: var(--orange-10);
+	background: var(--orange-2);
+	border: 1px solid var(--orange-6);
+	border-radius: 0.5rem;
+	margin-top: 2rem;
 }
 
 .retry-link {
-  background: none;
-  border: none;
-  color: var(--gray-9);
-  text-decoration: underline;
-  cursor: pointer;
-  font-size: inherit;
-  padding: 0;
+	background: none;
+	border: none;
+	color: var(--gray-9);
+	text-decoration: underline;
+	cursor: pointer;
+	font-size: inherit;
+	padding: 0;
 }
 
 .retry-link:hover {
-  color: var(--gray-10);
+	color: var(--gray-10);
 }
 
 .retry-link:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
-  border-radius: 2px;
+	outline: none;
+	box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+	border-radius: 2px;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .snippet-list-page {
-    padding: 1rem;
-  }
+	.snippet-list-page {
+		padding: 1rem;
+	}
 
-  .snippet-list-header h1 {
-    font-size: 2rem;
-  }
+	.snippet-list-header h1 {
+		font-size: 2rem;
+	}
 
-  .snippet-list-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
+	.snippet-list-grid {
+		grid-template-columns: 1fr;
+		gap: 1rem;
+	}
 
-  .copy-message {
-    top: 1rem;
-    right: 1rem;
-    left: 1rem;
-    text-align: center;
-  }
+	.copy-message {
+		top: 1rem;
+		right: 1rem;
+		left: 1rem;
+		text-align: center;
+	}
 }
 @media (max-width: 640px) {
-  .snippet-list-page {
-    padding: 0;
-    margin-top: 2rem;
-  }
+	.snippet-list-page {
+		padding: 0;
+		margin-top: 2rem;
+	}
 }
 
 @media (max-width: 480px) {
-  .snippet-list-header h1 {
-    font-size: 1.75rem;
-  }
+	.snippet-list-header h1 {
+		font-size: 1.75rem;
+	}
 
-  .snippet-list-header p {
-    font-size: 1rem;
-  }
+	.snippet-list-header p {
+		font-size: 1rem;
+	}
 
-  .load-more-button {
-    width: 100%;
-    max-width: 300px;
-  }
+	.load-more-button {
+		width: 100%;
+		max-width: 300px;
+	}
 }

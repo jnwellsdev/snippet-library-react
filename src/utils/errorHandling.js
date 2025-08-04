@@ -1,10 +1,3 @@
-/**
- * Error handling utilities for the application
- */
-
-/**
- * Error types for categorization
- */
 export const ERROR_TYPES = {
   NETWORK: 'network',
   AUTHENTICATION: 'authentication',
@@ -15,11 +8,6 @@ export const ERROR_TYPES = {
   UNKNOWN: 'unknown'
 }
 
-/**
- * Categorize error based on error message or code
- * @param {Error|string} error - Error object or message
- * @returns {string} Error type
- */
 export const categorizeError = (error) => {
   const message = typeof error === 'string' ? error : error?.message || ''
   const code = error?.code || ''
@@ -85,12 +73,7 @@ export const categorizeError = (error) => {
   return ERROR_TYPES.UNKNOWN
 }
 
-/**
- * Get user-friendly error message based on error type and context
- * @param {Error|string} error - Error object or message
- * @param {string} context - Context where error occurred (e.g., 'login', 'create_snippet')
- * @returns {string} User-friendly error message
- */
+// Get user-friendly error message based on error type and context
 export const getUserFriendlyMessage = (error, context = '') => {
   const errorType = categorizeError(error)
   const originalMessage = typeof error === 'string' ? error : error?.message || ''
@@ -115,7 +98,6 @@ export const getUserFriendlyMessage = (error, context = '') => {
       return 'You don\'t have permission to perform this action.'
 
     case ERROR_TYPES.VALIDATION:
-      // Return the original validation message as it's usually user-friendly
       return originalMessage || 'Please check your input and try again.'
 
     case ERROR_TYPES.NOT_FOUND:
@@ -129,7 +111,6 @@ export const getUserFriendlyMessage = (error, context = '') => {
 
     case ERROR_TYPES.UNKNOWN:
     default:
-      // For unknown errors, provide a generic message but include original if it's user-friendly
       if (originalMessage && originalMessage.length < 100 && !originalMessage.includes('Error:') && !originalMessage.includes('random') && !originalMessage.includes('technical details')) {
         return originalMessage
       }
@@ -137,11 +118,7 @@ export const getUserFriendlyMessage = (error, context = '') => {
   }
 }
 
-/**
- * Determine if an error is retryable
- * @param {Error|string} error - Error object or message
- * @returns {boolean} Whether the error is retryable
- */
+// Determine if an error is retryable
 export const isRetryableError = (error) => {
   const errorType = categorizeError(error)
   
@@ -152,12 +129,6 @@ export const isRetryableError = (error) => {
   ].includes(errorType)
 }
 
-/**
- * Log error with context for debugging
- * @param {Error|string} error - Error object or message
- * @param {string} context - Context where error occurred
- * @param {Object} additionalData - Additional data to log
- */
 export const logError = (error, context = '', additionalData = {}) => {
   const errorType = categorizeError(error)
   const timestamp = new Date().toISOString()
@@ -178,22 +149,8 @@ export const logError = (error, context = '', additionalData = {}) => {
   if (process.env.NODE_ENV === 'development') {
     console.error('Error logged:', logData)
   }
-
-  // In production, you might want to send to an error reporting service
-  // Example: Sentry, LogRocket, etc.
-  // if (process.env.NODE_ENV === 'production') {
-  //   errorReportingService.captureError(logData)
-  // }
 }
 
-/**
- * Create a standardized error object
- * @param {string} message - Error message
- * @param {string} code - Error code
- * @param {string} type - Error type
- * @param {Object} metadata - Additional metadata
- * @returns {Error} Standardized error object
- */
 export const createError = (message, code = '', type = ERROR_TYPES.UNKNOWN, metadata = {}) => {
   const error = new Error(message)
   error.code = code
@@ -202,12 +159,6 @@ export const createError = (message, code = '', type = ERROR_TYPES.UNKNOWN, meta
   return error
 }
 
-/**
- * Wrap async functions with error handling
- * @param {Function} fn - Async function to wrap
- * @param {string} context - Context for error logging
- * @returns {Function} Wrapped function
- */
 export const withErrorHandling = (fn, context = '') => {
   return async (...args) => {
     try {
@@ -218,14 +169,7 @@ export const withErrorHandling = (fn, context = '') => {
     }
   }
 }
-
-/**
- * Retry function with exponential backoff
- * @param {Function} fn - Function to retry
- * @param {number} maxRetries - Maximum number of retries
- * @param {number} baseDelay - Base delay in milliseconds
- * @returns {Promise} Result of the function
- */
+// Retry
 export const retryWithBackoff = async (fn, maxRetries = 3, baseDelay = 1000) => {
   let lastError
 

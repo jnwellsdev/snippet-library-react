@@ -1,0 +1,91 @@
+.desktop .dealerLogo, .desktop .adr, .desktop .socialMedia, .desktop .chatBlock, .mobile .dealerLogo, .desktop .tel4, .desktop .logoCarBravo, .mobile .logoCarBravo, .rotateLogos img.hideOnLoad { display: none; }
+.headerWrapper { box-shadow: 0 0 8px rgba(0,0,0,.2); }
+header { background-color: transparent; color: #222; }
+.desktop .dealerLogo img { max-height: 41px; }
+.desktop .logoCarBravo img {max-height: 34px;}
+.desktop label { font-weight: normal; margin-bottom: 0; }
+.desktop .socialMedia .fa { color: #4d4d4d; font-size: 1.6em; }
+.desktop .socialMedia .fa:hover { color: #4d4d4d; }
+.desktop .iconLinks .iconLink { border-left: 1px solid #ddd; color: #595959; } 
+.desktop .iconLinks li:first-of-type .iconLink { border: 0; }
+.desktop .iconLink span { font-size: 11px; }
+.navbar.navbar-default { background: transparent; }
+.saveHeartNavIcon:empty { display: none; }
+.saveHeartNavIcon a .fa {color: #C72020;}
+
+@media (min-width: 1800px) {
+.headerWrapper { height: 71px; }
+.desktop.container { position: absolute; padding: 0 30px; width: 100%; z-index: 1; }
+.headerWrapper ~ #content { padding-top: 71px; }
+.desktop .manuLogo img { width: 82px; }
+.desktop #rightBlockInfo { margin: 0; }
+.desktop .tel1 { font-size: 22px; }
+.desktop .tel2, .desktop .tel3 { display: block; }
+.desktop .iconLinks li { margin-left: -4px; }
+.desktop .iconLinks .iconLink { min-width: 65px; padding: 15px 10px; }
+/*.desktop .iconLinks .iconLink img {height: 32px;}*/
+.desktop .iconLinks .iconLink:hover { background-color: var(--cta-background-color); color: #fff; }
+/*.desktop .iconLinks .iconLink:hover img {filter: invert(99%) sepia(8%) saturate(188%) hue-rotate(271deg) brightness(116%) contrast(100%);}*/
+.desktop .iconLink span { display: block; }
+#nav, .navbar.navbar-default { background: transparent }
+.navbar.navbar-default { left: 460px; position: absolute; }
+.navbar-default .navbar-nav li a { padding: 25.5px 15px; }
+}
+@media (max-width: 1799px) and (min-width: 1200px) {
+.navbar-default .navbar-nav li a { padding: 22px 15px; }
+}
+@media (max-width: 1799px) and (min-width: 992px) {
+.headerWrapper ~ #content { padding-top: 99px; }
+.desktop #leftBlockInfo { position: absolute; top: 37px; z-index: 1001; }
+.desktop .tel2, .desktop .tel3 { display: inline-block; margin-right: 8px; }
+.desktop .iconLinks .iconLink { padding: 0px 15px; }
+.desktop .iconLinks .fa { margin: 0 5px 0 0; }
+.desktop .iconLinks .iconLink:hover { color: var(--cta-background-color); }
+.desktop .iconLinks .iconLink img {display: inline-block; height: 22px;}
+.navbar-nav { float: right; }
+}
+@media (max-width: 1799px) and (min-width: 768px) {
+.desktop .manuLogo img { width: 70px; }
+}
+@media (max-width: 1199px) and (min-width: 992px) {
+.navbar-default .navbar-nav li a { padding: 22px 12px; }
+}
+@media (min-width: 992px) {
+.headerWrapper { background-color: #fff; left: 0; position: fixed; right: 0; z-index: 1030; }
+.navbar-default .navbar-nav li a { var(--main-color); }
+.navbar-default .dropdown-menu li a { color: #fff !important; background-color: var(--main-color); padding: 8px 15px; }
+.navbar-default .navbar-nav .open a, .navbar-default .navbar-nav .open a:hover, .navbar-default .navbar-nav .open a:focus { background-color: var(--main-color); color: #fff; }
+}
+@media (max-width: 991px) {
+.navbar-default .navbar-toggle, .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus { background-color: #fff; border-color: transparent; box-shadow: none; color: #222; }
+.navbar.navbar-default {background: #fff;}
+}
+@media (max-width: 991px) and (min-width: 768px) {
+.headerWrapper { margin-bottom: 0 !important; }
+.headerWrapper ~ #content { padding-top: 58px; }
+.desktop { padding: 0 20px; position: fixed; width: auto; z-index: 1001; }
+.desktop .tel1 { font-size: 18px; margin: 11px 0 0 25px; }
+.desktop .tel2, .desktop .tel3 { display: none; }
+.navbar-static-top { position: fixed; width: 100%; }
+.navbar-default .navbar-toggle { padding: 1em 1.2em !important; }
+.sticky-is-enabled .navbar-header, .navbar.navbar-default { box-shadow: 0 0 8px rgba(0,0,0,.2); }
+.desktop .saveHeartNavIcon {margin: 10px 0 0 10px;}
+.desktop .saveHeartNavIcon .iconLink {display: flex; flex-direction: row; align-items: center; border: none;}
+.desktop .saveHeartNavIcon .iconLink:hover {color: #C72020;}
+.desktop .saveHeartNavIcon .iconLink .fa {margin: 0 10px; font-size: 1.5em;}
+.desktop .saveHeartNavIcon .iconLink span {font-size: 12px;}
+}
+@media (max-width:767px) {
+header { background-color: #fff; }
+.mobile .manuLogo img { width: 70px; }
+.mobile .dealerLogo img { max-height: 32px; margin: 12px 0 0; }
+.mobile .dealerName { margin: 21px 0 0 10px; }
+.mobile .logoCarBravo img {max-height: 26px; margin: 17px 0 0 10px;}
+.mobile .btn-nav { background-color: transparent; border-color: transparent; color: #222; }
+#nav { border-top: 1px solid #eee; }
+.sticky-is-enabled .navbar-header, .navbar.navbar-default { box-shadow: 0 3px 3px rgba(0,0,0,.1); }
+.mobile .saveHeartNavIcon {float: right; margin: 10px 0 10px;}
+.mobile .saveHeartNavIcon .iconLink {display: flex; flex-direction: column; align-items: center;}
+.mobile .saveHeartNavIcon a .fa {color: #C72020;}
+.mobile .saveHeartNavIcon a span {font-size: 11px; color: #555;}
+}

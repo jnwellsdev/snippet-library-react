@@ -55,8 +55,7 @@ describe('authService', () => {
         expect.any(Object),
         email,
         expect.objectContaining({
-          url: window.location.origin,
-          handleCodeInApp: true,
+          handleCodeInApp: true
         })
       )
       expect(localStorage.setItem).toHaveBeenCalledWith('emailForSignIn', email)

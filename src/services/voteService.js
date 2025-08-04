@@ -1,15 +1,8 @@
-/**
- * Vote service for handling voting operations
- */
+
 import { toggleVote, getUserVote, getSnippetVotes } from './firestoreService';
 import { Vote } from '../models';
 
-/**
- * Vote on a snippet (toggle vote)
- * @param {string} userId - User ID
- * @param {string} snippetId - Snippet ID
- * @returns {Promise<{action: string, voteId: string}>} Action performed and vote ID
- */
+// Vote on a snippet (toggle)
 export const voteOnSnippet = async (userId, snippetId) => {
   if (!userId || !snippetId) {
     throw new Error('User ID and Snippet ID are required');
@@ -24,12 +17,8 @@ export const voteOnSnippet = async (userId, snippetId) => {
   return await toggleVote(vote);
 };
 
-/**
- * Check if user has voted on a snippet
- * @param {string} userId - User ID
- * @param {string} snippetId - Snippet ID
- * @returns {Promise<boolean>} True if user has voted
- */
+// Check if user voted
+
 export const hasUserVoted = async (userId, snippetId) => {
   if (!userId || !snippetId) {
     return false;
@@ -44,11 +33,8 @@ export const hasUserVoted = async (userId, snippetId) => {
   }
 };
 
-/**
- * Get all votes for a snippet
- * @param {string} snippetId - Snippet ID
- * @returns {Promise<Array<Vote>>} Array of votes
- */
+ // Get all votes 
+ 
 export const getVotesForSnippet = async (snippetId) => {
   if (!snippetId) {
     throw new Error('Snippet ID is required');
@@ -57,11 +43,7 @@ export const getVotesForSnippet = async (snippetId) => {
   return await getSnippetVotes(snippetId);
 };
 
-/**
- * Get vote count for a snippet
- * @param {string} snippetId - Snippet ID
- * @returns {Promise<number>} Vote count
- */
+// Get vote count 
 export const getVoteCount = async (snippetId) => {
   try {
     const votes = await getVotesForSnippet(snippetId);
@@ -72,12 +54,7 @@ export const getVoteCount = async (snippetId) => {
   }
 };
 
-/**
- * Get user's vote for a snippet
- * @param {string} userId - User ID
- * @param {string} snippetId - Snippet ID
- * @returns {Promise<Vote|null>} User's vote or null
- */
+// Get user's vote 
 export const getUserVoteForSnippet = async (userId, snippetId) => {
   if (!userId || !snippetId) {
     return null;

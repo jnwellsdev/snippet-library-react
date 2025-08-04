@@ -1,8 +1,7 @@
-// Export validation and transformation utilities
 export * from './validation.js';
 export * from './transformers.js';
 
-// HTML sanitization and preview utilities (will be expanded in Task 6)
+// Preview HTML
 export const INJECTED_STYLES = `
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>

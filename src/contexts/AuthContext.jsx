@@ -36,13 +36,13 @@ export const AuthProvider = ({ children }) => {
             email: firebaseUser.email,
             displayName: firebaseUser.displayName,
           })
-          
+
           await createOrUpdateUser(userModel)
-          
+
           // Set user with consistent structure (id instead of uid)
           setUser({
             ...firebaseUser,
-            id: firebaseUser.uid
+            id: firebaseUser.uid,
           })
         } catch (error) {
           console.error('Error creating/updating user document:', error)
@@ -59,16 +59,20 @@ export const AuthProvider = ({ children }) => {
       if (isSignInLink()) {
         try {
           let email = getStoredEmailForSignIn()
-          
+
           // If no stored email, prompt user to enter it
           if (!email) {
             email = window.prompt('Please provide your email for confirmation')
           }
-          
+
           if (email) {
             await signInWithMagicLink(email, window.location.href)
             // Clear the URL parameters after successful sign-in
-            window.history.replaceState({}, document.title, window.location.pathname)
+            window.history.replaceState(
+              {},
+              document.title,
+              window.location.pathname
+            )
           }
         } catch (error) {
           console.error('Error completing sign-in:', error)

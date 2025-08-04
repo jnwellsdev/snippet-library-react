@@ -23,15 +23,21 @@ import {
 
 // Test component to access auth context
 const TestComponent = () => {
-  const { user, loading, error, login, logout, clearError, isAuthenticated } = useAuth()
-  
+  const { user, loading, error, login, logout, clearError, isAuthenticated } =
+    useAuth()
+
   return (
     <div>
       <div data-testid="user">{user ? user.email : 'No user'}</div>
       <div data-testid="loading">{loading ? 'Loading' : 'Not loading'}</div>
       <div data-testid="error">{error || 'No error'}</div>
-      <div data-testid="authenticated">{isAuthenticated ? 'Authenticated' : 'Not authenticated'}</div>
-      <button onClick={() => login('test@example.com')} data-testid="login-btn">
+      <div data-testid="authenticated">
+        {isAuthenticated ? 'Authenticated' : 'Not authenticated'}
+      </div>
+      <button
+        onClick={() => login('test@dealeron.com')}
+        data-testid="login-btn"
+      >
         Login
       </button>
       <button onClick={logout} data-testid="logout-btn">
@@ -65,11 +71,11 @@ describe('AuthContext', () => {
   it('should throw error when useAuth is used outside AuthProvider', () => {
     // Suppress console.error for this test
     const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {})
-    
+
     expect(() => {
       render(<TestComponent />)
     }).toThrow('useAuth must be used within an AuthProvider')
-    
+
     consoleSpy.mockRestore()
   })
 
@@ -83,7 +89,9 @@ describe('AuthContext', () => {
     // Initially loading should be true
     expect(screen.getByTestId('loading')).toHaveTextContent('Loading')
     expect(screen.getByTestId('user')).toHaveTextContent('No user')
-    expect(screen.getByTestId('authenticated')).toHaveTextContent('Not authenticated')
+    expect(screen.getByTestId('authenticated')).toHaveTextContent(
+      'Not authenticated'
+    )
 
     // Wait for auth state to be set
     await waitFor(() => {
@@ -92,8 +100,8 @@ describe('AuthContext', () => {
   })
 
   it('should handle user authentication', async () => {
-    const mockUser = { uid: '123', email: 'test@example.com' }
-    
+    const mockUser = { uid: '123', email: 'test@dealeron.com' }
+
     onAuthStateChange.mockImplementation((callback) => {
       // Simulate user authentication
       setTimeout(() => callback(mockUser), 0)
@@ -107,8 +115,10 @@ describe('AuthContext', () => {
     )
 
     await waitFor(() => {
-      expect(screen.getByTestId('user')).toHaveTextContent('test@example.com')
-      expect(screen.getByTestId('authenticated')).toHaveTextContent('Authenticated')
+      expect(screen.getByTestId('user')).toHaveTextContent('test@dealeron.com')
+      expect(screen.getByTestId('authenticated')).toHaveTextContent(
+        'Authenticated'
+      )
       expect(screen.getByTestId('loading')).toHaveTextContent('Not loading')
     })
   })
@@ -130,7 +140,7 @@ describe('AuthContext', () => {
       screen.getByTestId('login-btn').click()
     })
 
-    expect(sendMagicLink).toHaveBeenCalledWith('test@example.com')
+    expect(sendMagicLink).toHaveBeenCalledWith('test@dealeron.com')
   })
 
   it('should handle login errors', async () => {
@@ -151,7 +161,7 @@ describe('AuthContext', () => {
     await act(async () => {
       screen.getByTestId('login-btn').click()
       // Wait a bit for the async operation to complete
-      await new Promise(resolve => setTimeout(resolve, 10))
+      await new Promise((resolve) => setTimeout(resolve, 10))
     })
 
     await waitFor(() => {
@@ -197,7 +207,7 @@ describe('AuthContext', () => {
     await act(async () => {
       screen.getByTestId('login-btn').click()
       // Wait a bit for the async operation to complete
-      await new Promise(resolve => setTimeout(resolve, 10))
+      await new Promise((resolve) => setTimeout(resolve, 10))
     })
 
     await waitFor(() => {
@@ -213,13 +223,18 @@ describe('AuthContext', () => {
   })
 
   it('should handle sign-in link on mount', async () => {
-    signInWithMagicLink.mockResolvedValue({ uid: '123', email: 'test@example.com' })
-    
+    signInWithMagicLink.mockResolvedValue({
+      uid: '123',
+      email: 'test@dealeron.com',
+    })
+
     isSignInLink.mockReturnValue(true)
-    getStoredEmailForSignIn.mockReturnValue('test@example.com')
+    getStoredEmailForSignIn.mockReturnValue('test@dealeron.com')
 
     // Mock window.history.replaceState
-    const replaceStateSpy = vi.spyOn(window.history, 'replaceState').mockImplementation(() => {})
+    const replaceStateSpy = vi
+      .spyOn(window.history, 'replaceState')
+      .mockImplementation(() => {})
 
     render(
       <AuthProvider>
@@ -228,7 +243,10 @@ describe('AuthContext', () => {
     )
 
     await waitFor(() => {
-      expect(signInWithMagicLink).toHaveBeenCalledWith('test@example.com', window.location.href)
+      expect(signInWithMagicLink).toHaveBeenCalledWith(
+        'test@dealeron.com',
+        window.location.href
+      )
       expect(replaceStateSpy).toHaveBeenCalled()
     })
 

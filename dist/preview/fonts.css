@@ -1,0 +1,136 @@
+@font-face {
+  font-family: 'LatoRegular';
+  src:
+    url('https://cdn.dlron.us/assets/fonts/lato/LatoRegular.woff2')
+      format('woff2'),
+    url('https://cdn.dlron.us/assets/fonts/lato/LatoRegular.woff')
+      format('woff'),
+    url('https://cdn.dlron.us/assets/fonts/lato/LatoRegular.ttf')
+      format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'LatoBold';
+  src:
+    url('https://cdn.dlron.us/assets/fonts/lato/LatoBold.woff2') format('woff2'),
+    url('https://cdn.dlron.us/assets/fonts/lato/LatoBold.woff') format('woff'),
+    url('https://cdn.dlron.us/assets/fonts/lato/LatoBold.ttf')
+      format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'LatoMedium';
+  src:
+    url('https://cdn.dlron.us/assets/fonts/lato/LatoMedium.woff2')
+      format('woff2'),
+    url('https://cdn.dlron.us/assets/fonts/lato/LatoMedium.woff') format('woff'),
+    url('https://cdn.dlron.us/assets/fonts/lato/LatoMedium.ttf')
+      format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'LatoSemibold';
+  src:
+    url('https://cdn.dlron.us/assets/fonts/lato/LatoSemibold.woff2')
+      format('woff2'),
+    url('https://cdn.dlron.us/assets/fonts/lato/LatoSemibold.woff')
+      format('woff'),
+    url('https://cdn.dlron.us/assets/fonts/lato/LatoSemibold.ttf')
+      format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'LatoBlack';
+  src:
+    url('https://cdn.dlron.us/assets/fonts/lato/LatoBlack.woff2')
+      format('woff2'),
+    url('https://cdn.dlron.us/assets/fonts/lato/LatoBlack.woff') format('woff'),
+    url('https://cdn.dlron.us/assets/fonts/lato/LatoBlack.ttf')
+      format('truetype');
+  font-display: swap;
+}
+
+/* For Wasabi SRP / Hoisin VDP */
+/* Lato Regular (400) */
+@font-face {
+  font-family: 'Lato';
+  font-weight: 400;
+  src:
+    url('https://cdn.dlron.us/assets/fonts/lato/LatoRegular.woff2')
+      format('woff2'),
+    url('https://cdn.dlron.us/assets/fonts/lato/LatoRegular.woff')
+      format('woff'),
+    url('https://cdn.dlron.us/assets/fonts/lato/LatoRegular.ttf')
+      format('truetype');
+  font-display: swap;
+}
+/* Lato Medium (500) */
+@font-face {
+  font-family: 'Lato';
+  font-weight: 500;
+  src:
+    url('https://cdn.dlron.us/assets/fonts/lato/LatoMedium.woff2')
+      format('woff2'),
+    url('https://cdn.dlron.us/assets/fonts/lato/LatoMedium.woff') format('woff'),
+    url('https://cdn.dlron.us/assets/fonts/lato/LatoMedium.ttf')
+      format('truetype');
+  font-display: swap;
+}
+/* Lato Semibold (600) */
+@font-face {
+  font-family: 'Lato';
+  font-weight: 600;
+  src:
+    url('https://cdn.dlron.us/assets/fonts/lato/LatoSemibold.woff2')
+      format('woff2'),
+    url('https://cdn.dlron.us/assets/fonts/lato/LatoSemibold.woff')
+      format('woff'),
+    url('https://cdn.dlron.us/assets/fonts/lato/LatoSemibold.ttf')
+      format('truetype');
+  font-display: swap;
+}
+/* Lato Bold (700) */
+@font-face {
+  font-family: 'Lato';
+  font-weight: 700;
+  src:
+    url('https://cdn.dlron.us/assets/fonts/lato/LatoBold.woff2') format('woff2'),
+    url('https://cdn.dlron.us/assets/fonts/lato/LatoBold.woff') format('woff'),
+    url('https://cdn.dlron.us/assets/fonts/lato/LatoBold.ttf')
+      format('truetype');
+  font-display: swap;
+}
+/* Lato Black (900) */
+@font-face {
+  font-family: 'Lato';
+  font-weight: 900;
+  src:
+    url('https://cdn.dlron.us/assets/fonts/lato/LatoBlack.woff2')
+      format('woff2'),
+    url('https://cdn.dlron.us/assets/fonts/lato/LatoBlack.woff') format('woff'),
+    url('https://cdn.dlron.us/assets/fonts/lato/LatoBlack.ttf')
+      format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ChevySans';
+  src: url('/preview/ChevySans-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ChevySans';
+  src: url('/preview/ChevySans-Demi.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ChevySans';
+  src: url('/preview/ChevySans-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
