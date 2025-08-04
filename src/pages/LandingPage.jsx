@@ -38,7 +38,6 @@ const LandingPage = () => {
 		}
 	}
 
-	// Handle snippet card click - same as SnippetListPage
 	const handleSnippetClick = (snippet) => {
 		navigate(`/snippets/${snippet.id}`)
 	}

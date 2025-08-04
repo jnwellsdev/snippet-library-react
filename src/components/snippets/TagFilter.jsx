@@ -4,15 +4,6 @@ import { ListFilter, Check } from 'lucide-react'
 import { getAllTags } from '../../services/firestoreService'
 import './TagFilter.css'
 
-/**
- * TagFilter component for filtering snippets by tags and sorting
- * @param {Object} props
- * @param {Array<string>} props.selectedTags - Currently selected tags
- * @param {Function} props.onTagsChange - Callback when selected tags change
- * @param {string} props.sortBy - Current sort option ('popular' or 'recent')
- * @param {Function} props.onSortChange - Callback when sort option changes
- * @param {string} props.className - Additional CSS classes
- */
 const TagFilter = ({ selectedTags = [], onTagsChange, sortBy = 'popular', onSortChange, className = '' }) => {
 	const [availableTags, setAvailableTags] = useState([])
 	const [isLoading, setIsLoading] = useState(true)

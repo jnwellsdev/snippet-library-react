@@ -15,7 +15,7 @@ const SnippetListPage = () => {
 	const [hasNextPage, setHasNextPage] = useState(false)
 	const [lastDoc, setLastDoc] = useState(null)
 	const [selectedTags, setSelectedTags] = useState([])
-	const [sortBy, setSortBy] = useState('popular') // 'popular' or 'recent'
+	const [sortBy, setSortBy] = useState('popular')
 
 	const navigate = useNavigate()
 

@@ -55,17 +55,14 @@ const INJECTED_SCRIPTS = `
 <script src="/preview/modernizr.min.js"></script>
 <script src="/preview/jquery.validate.min.js"></script>
 <script>
-// Prevent link navigation while preserving other interactions
+// Prevent links and submit
 document.addEventListener('DOMContentLoaded', function() {
-  // Disable all link navigation
   document.addEventListener('click', function(e) {
     if (e.target.tagName === 'A' || e.target.closest('a')) {
       e.preventDefault();
       return false;
     }
   }, true);
-  
-  // Also prevent form submissions that might navigate
   document.addEventListener('submit', function(e) {
     e.preventDefault();
     return false;
