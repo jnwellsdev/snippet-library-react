@@ -4,12 +4,13 @@ import SyntaxHighlighter from './SyntaxHighlighter'
 import SnippetPreview from './SnippetPreview'
 import CopyButton from './CopyButton'
 import VoteButton from './VoteButton'
+import ApprovedButton from './ApprovedButton'
 import { formatDate, getDisplayNameFromEmail, toTitleCase } from '../../utils/transformers'
 import './SnippetDetail.css'
 
-const SnippetDetail = ({ snippet, onCopy, onUpdate, onDelete, className = '' }) => {
+const SnippetDetail = ({ snippet, onCopy, onUpdate, onDelete, className = '', initialTab = 'preview' }) => {
 	const { user } = useAuth()
-	const [activeTab, setActiveTab] = useState('preview')
+	const [activeTab, setActiveTab] = useState(initialTab)
 	const [isEditing, setIsEditing] = useState(false)
 	const [editedContent, setEditedContent] = useState(snippet?.htmlContent || '')
 	const [editedTitle, setEditedTitle] = useState(snippet?.title || '')
@@ -179,6 +180,7 @@ const SnippetDetail = ({ snippet, onCopy, onUpdate, onDelete, className = '' }) 
 				</div>
 
 				<div className='snippet-detail-actions'>
+					<ApprovedButton snippetId={snippet.id} initialApproved={snippet.approved || false} className='snippet-detail-approved-button' />
 					<VoteButton snippetId={snippet.id} initialVoteCount={snippet.voteCount || 0} className='snippet-detail-vote-button' />
 
 					<CopyButton text={isEditing ? editedContent : snippet.htmlContent} size='medium' onCopySuccess={handleCopySuccess} onCopyError={handleCopyError} className='snippet-detail-copy-button' />

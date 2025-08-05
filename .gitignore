@@ -9,3 +9,4 @@ firestore.rules
 docs/
 **/__tests__/
 tests/
+public/preview/etc

@@ -46,7 +46,7 @@ const SnippetCard = ({ snippet, onClick, onCopy, className = '', livePreview = f
 					{truncatedTitle}
 				</h3>
 				<div className='snippet-card-actions'>
-					<ApprovedButton snippetId={snippet.id} className='snippet-card-approved' />
+					<ApprovedButton snippetId={snippet.id} initialApproved={snippet.approved || false} className='snippet-card-approved' />
 					<VoteButton snippetId={snippet.id} initialVoteCount={snippet.voteCount || 0} className='snippet-card-vote-button' />
 					<CopyButton text={snippet.htmlContent} size='small' onCopySuccess={handleCopySuccess} onCopyError={handleCopyError} className='snippet-card-copy-button' />
 				</div>
@@ -54,7 +54,7 @@ const SnippetCard = ({ snippet, onClick, onCopy, className = '', livePreview = f
 
 			<div className='snippet-card-content'>
 				{livePreview ? (
-					<SnippetPreview htmlContent={snippet.htmlContent} height={120} className='snippet-card-preview-component' />
+					<SnippetPreview htmlContent={snippet.htmlContent} height={180} className='snippet-card-preview-component' />
 				) : (
 					<p className='snippet-card-preview' title={snippet.htmlContent}>
 						{truncatedContent}

@@ -13,6 +13,7 @@ export class Snippet {
     updatedAt = null,
     voteCount = 0,
     tags = [],
+    approved = false,
   }) {
     this.id = id;
     this.title = title;
@@ -23,6 +24,7 @@ export class Snippet {
     this.updatedAt = updatedAt;
     this.voteCount = voteCount;
     this.tags = tags;
+    this.approved = approved;
   }
 
   /**
@@ -42,6 +44,7 @@ export class Snippet {
       updatedAt: data.updatedAt,
       voteCount: data.voteCount || 0,
       tags: data.tags || [],
+      approved: data.approved || false,
     });
   }
 
@@ -59,6 +62,7 @@ export class Snippet {
       updatedAt: this.updatedAt,
       voteCount: this.voteCount,
       tags: this.tags,
+      approved: this.approved,
     };
   }
 

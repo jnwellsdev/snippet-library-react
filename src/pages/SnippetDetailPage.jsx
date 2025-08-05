@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate, useSearchParams, useLocation } from 'react-router-dom'
 import { SnippetDetail, PageContainer, LoadingCard, LoadingButton } from '../components'
 import { getSnippet, updateSnippet, deleteSnippet } from '../services/firestoreService'
 import './SnippetDetailPage.css'
@@ -7,10 +7,15 @@ import './SnippetDetailPage.css'
 const SnippetDetailPage = () => {
 	const { id } = useParams()
 	const navigate = useNavigate()
+	const [searchParams] = useSearchParams()
+	const location = useLocation()
 
 	const [snippet, setSnippet] = useState(null)
 	const [isLoading, setIsLoading] = useState(true)
 	const [error, setError] = useState(null)
+
+	// Determine initial tab from URL params
+	const initialTab = searchParams.get('tab') || 'preview'
 
 	// init snippet data
 	useEffect(() => {
@@ -90,7 +95,17 @@ const SnippetDetailPage = () => {
 		}
 	}
 
-	const handleBackClick = () => navigate(-1)
+	const handleBackClick = () => {
+		// Check if we came from the create page (would have tab=code in URL)
+		// or if there's no previous history
+		if (searchParams.get('tab') === 'code' || window.history.length <= 1) {
+			// Go to snippets list instead of back to create form
+			navigate('/snippets')
+		} else {
+			// Normal back navigation
+			navigate(-1)
+		}
+	}
 
 	if (isLoading) {
 		return (
@@ -142,7 +157,7 @@ const SnippetDetailPage = () => {
 						</LoadingButton>
 					</div>
 
-					<SnippetDetail snippet={snippet} onCopy={handleCopy} onUpdate={handleUpdate} onDelete={handleDelete} className='snippet-detail-main' />
+					<SnippetDetail snippet={snippet} onCopy={handleCopy} onUpdate={handleUpdate} onDelete={handleDelete} className='snippet-detail-main' initialTab={initialTab} />
 				</div>
 			</div>
 		</PageContainer>

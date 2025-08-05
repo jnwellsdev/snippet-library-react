@@ -180,6 +180,13 @@ export const updateSnippet = async (snippetId, updates) => {
   await updateDocument(COLLECTIONS.SNIPPETS, snippetId, updates);
 };
 
+// Toggle snippet approval status
+export const toggleSnippetApproval = async (snippetId, approved) => {
+  await updateDocument(COLLECTIONS.SNIPPETS, snippetId, { 
+    approved: approved
+  });
+};
+
 // Delete snippet
 export const deleteSnippet = async (snippetId) => {
   await deleteDocument(COLLECTIONS.SNIPPETS, snippetId);

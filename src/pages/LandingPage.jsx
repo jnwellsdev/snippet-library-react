@@ -46,7 +46,11 @@ const LandingPage = () => {
 		return (
 			<PageContainer>
 				<div className='landing-page'>
-					<div class='snippet-list-title'>Top Snippets</div>
+					<div className='welcome-section'>
+						<h3>Welcome.</h3>
+						<p className='welcome-text'>Sign in with the magic link to Add, Edit, Vote, Approve and Share HTML Snippets.</p>
+					</div>
+
 					<div className='featured-snippets-section'>
 						<div className='snippets-grid'>
 							<LoadingCard variant='snippet' count={4} />
@@ -60,7 +64,10 @@ const LandingPage = () => {
 	return (
 		<PageContainer>
 			<div className='landing-page'>
-				<div class='snippet-list-title'>Top Snippets</div>
+				<div className='welcome-section'>
+					<h3>Welcome.</h3>
+					<p className='welcome-text'>Sign in with the magic link to Add, Edit, Vote, Approve and Share HTML Snippets.</p>
+				</div>
 
 				<div className='featured-snippets-section'>
 					{error && (

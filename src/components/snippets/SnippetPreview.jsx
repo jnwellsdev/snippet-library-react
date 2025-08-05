@@ -18,7 +18,6 @@ const INJECTED_STYLES = `
 <link rel="stylesheet" href="/preview/bootstrap.min.css" />
 <link rel="stylesheet" href="/preview/main.css" />
 <link rel="stylesheet" href="/preview/extend.css" />
-<link rel="stylesheet" href="/preview/layout.css" />
 <link rel="stylesheet" href="/preview/common.css" />
 <link rel="stylesheet" href="/preview/menu.css" />
 <link rel="stylesheet" href="/preview/header.css" />
@@ -27,8 +26,6 @@ const INJECTED_STYLES = `
 <style>
 body {  margin: 0; padding: 16px; font-family: system-ui, -apple-system, sans-serif; background: #f2eef5; } }
 * { box-sizing: border-box; }
-a {text-decoration: none; }
-.btn-lg { padding: 12px 16px; }
 :root {
     --cta-background-color: #888;
     --cta-font-color: #fff;
@@ -48,9 +45,6 @@ a {text-decoration: none; }
 
 const INJECTED_SCRIPTS = `
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="/preview/ua-parser.min.js"></script>
-<script src="/preview/dealeron.js"></script>
-<script src="/preview/dealeron.static.min.js"></script>
 <script src="/preview/bootstrap.min.js"></script>
 <script src="/preview/modernizr.min.js"></script>
 <script src="/preview/jquery.validate.min.js"></script>
