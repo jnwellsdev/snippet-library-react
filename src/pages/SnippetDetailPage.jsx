@@ -1,7 +1,17 @@
-import { useState, useEffect } from 'react'
-import { useParams, useNavigate, useSearchParams, useLocation } from 'react-router-dom'
-import { SnippetDetail, PageContainer, LoadingCard, LoadingButton } from '../components'
-import { getSnippet, updateSnippet, deleteSnippet } from '../services/firestoreService'
+import { useEffect, useState } from 'react'
+import {
+	useLocation,
+	useNavigate,
+	useParams,
+	useSearchParams,
+} from 'react-router-dom'
+import {
+	LoadingButton,
+	LoadingCard,
+	PageContainer,
+	SnippetDetail,
+} from '../components'
+import { getSnippet } from '../services/firestoreService'
 import './SnippetDetailPage.css'
 
 const SnippetDetailPage = () => {
@@ -59,35 +69,38 @@ const SnippetDetailPage = () => {
 			return Promise.reject(error)
 		}
 	}
-
 	const handleUpdate = async (updatedSnippet) => {
+		// Portfolio mode: Simulate update without actual backend calls
 		try {
+			// Simulate API delay
+			await new Promise((resolve) => setTimeout(resolve, 1000))
+
 			const updateData = {
 				title: updatedSnippet.title,
 				htmlContent: updatedSnippet.htmlContent,
 				tags: updatedSnippet.tags || [],
 			}
 
-			await updateSnippet(snippet.id, updateData)
-
-			// Update local state
+			// Update local state only
 			setSnippet({
 				...snippet,
 				...updateData,
 				updatedAt: new Date().toISOString(),
 			})
 
-			console.log('Snippet updated successfully')
+			console.log('Snippet updated successfully (portfolio mode)')
 		} catch (error) {
 			console.error('Error updating snippet:', error)
 			throw error
 		}
 	}
-
 	const handleDelete = async (snippetId) => {
+		// Portfolio mode: Simulate delete without actual backend calls
 		try {
-			await deleteSnippet(snippetId)
-			console.log('Snippet deleted successfully')
+			// Simulate API delay
+			await new Promise((resolve) => setTimeout(resolve, 1000))
+
+			console.log('Snippet deleted successfully (portfolio mode)')
 			navigate('/snippets')
 		} catch (error) {
 			console.error('Error deleting snippet:', error)
@@ -136,7 +149,10 @@ const SnippetDetailPage = () => {
 								<LoadingButton variant='secondary' onClick={handleBackClick}>
 									Go Back
 								</LoadingButton>
-								<LoadingButton variant='primary' onClick={() => window.location.reload()}>
+								<LoadingButton
+									variant='primary'
+									onClick={() => window.location.reload()}
+								>
 									Try Again
 								</LoadingButton>
 							</div>
@@ -157,7 +173,14 @@ const SnippetDetailPage = () => {
 						</LoadingButton>
 					</div>
 
-					<SnippetDetail snippet={snippet} onCopy={handleCopy} onUpdate={handleUpdate} onDelete={handleDelete} className='snippet-detail-main' initialTab={initialTab} />
+					<SnippetDetail
+						snippet={snippet}
+						onCopy={handleCopy}
+						onUpdate={handleUpdate}
+						onDelete={handleDelete}
+						className='snippet-detail-main'
+						initialTab={initialTab}
+					/>
 				</div>
 			</div>
 		</PageContainer>

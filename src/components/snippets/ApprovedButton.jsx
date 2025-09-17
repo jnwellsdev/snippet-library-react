@@ -1,11 +1,14 @@
 import { useState } from 'react'
 import { useAuth } from '../../contexts/AuthContext'
-import { toggleSnippetApproval } from '../../services/approvalService'
 import './ApprovedButton.css'
 
 const adminEmails = ['jessenwells@gmail.com']
 
-export const ApprovedButton = ({ snippetId, initialApproved = false, className = '' }) => {
+export const ApprovedButton = ({
+	snippetId,
+	initialApproved = false,
+	className = '',
+}) => {
 	const { user } = useAuth()
 	const [approved, setApproved] = useState(initialApproved)
 	const [loading, setLoading] = useState(false)
@@ -17,18 +20,21 @@ export const ApprovedButton = ({ snippetId, initialApproved = false, className =
 	if (!isAdmin && !approved) {
 		return null
 	}
-
 	const handleToggleApproval = async (event) => {
 		event.stopPropagation() // Prevent card click
 
 		// Only allow admin users to toggle
 		if (!isAdmin || loading) return
 
+		// Portfolio mode: Simulate approval toggle without backend calls
 		try {
 			setLoading(true)
+			// Simulate API delay
+			await new Promise((resolve) => setTimeout(resolve, 500))
+
 			const newApprovedStatus = !approved
-			await toggleSnippetApproval(snippetId, newApprovedStatus)
 			setApproved(newApprovedStatus)
+			console.log('Approval toggled successfully (portfolio mode)')
 		} catch (error) {
 			console.error('Failed to toggle approval:', error)
 		} finally {
@@ -39,10 +45,18 @@ export const ApprovedButton = ({ snippetId, initialApproved = false, className =
 	return (
 		<div className={`approved-button ${className}`}>
 			<button
-				className={`approved-btn ${approved ? 'approved-btn-approved' : 'approved-btn-pending'} ${loading ? 'approved-btn-loading' : ''}`}
+				className={`approved-btn ${
+					approved ? 'approved-btn-approved' : 'approved-btn-pending'
+				} ${loading ? 'approved-btn-loading' : ''}`}
 				onClick={handleToggleApproval}
 				disabled={!isAdmin || loading}
-				title={!isAdmin ? 'Approved by admin' : approved ? 'Approved - Click to unapprove' : 'Click to approve'}
+				title={
+					!isAdmin
+						? 'Approved by admin'
+						: approved
+						? 'Approved - Click to unapprove'
+						: 'Click to approve'
+				}
 			>
 				{approved ? (
 					// Checked circle icon
@@ -66,7 +80,9 @@ export const ApprovedButton = ({ snippetId, initialApproved = false, className =
 					</svg>
 				)}
 
-				<span className='approved-text'>{approved ? 'Approved' : 'Approve'}</span>
+				<span className='approved-text'>
+					{approved ? 'Approved' : 'Approve'}
+				</span>
 			</button>
 		</div>
 	)

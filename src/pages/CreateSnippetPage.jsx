@@ -1,9 +1,7 @@
 import { useState } from 'react'
-import { useAuth } from '../contexts/AuthContext'
 import { useNavigate } from 'react-router-dom'
-import { createSnippet } from '../services/firestoreService'
-import { Snippet } from '../models/Snippet'
-import { SnippetForm, PageContainer, LoadingButton } from '../components'
+import { PageContainer, SnippetForm } from '../components'
+import { useAuth } from '../contexts/AuthContext'
 import './CreateSnippetPage.css'
 
 const CreateSnippetPage = () => {
@@ -11,33 +9,20 @@ const CreateSnippetPage = () => {
 	const [error, setError] = useState(null)
 	const { user } = useAuth()
 	const navigate = useNavigate()
-
 	const handleSubmit = async (formData) => {
-		if (!user) {
-			setError('You must be logged in to create a snippet')
-			return
-		}
-
+		// Portfolio mode: Simulate success without actually creating snippet
 		setLoading(true)
 		setError(null)
 
 		try {
-			// Create new snippet instance
-			const snippet = new Snippet({
-				title: formData.title.trim(),
-				htmlContent: formData.htmlContent.trim(),
-				authorId: user.uid,
-				authorEmail: user.email,
-				voteCount: 0,
-				tags: formData.tags || [],
-			})
+			// Simulate API call delay
+			await new Promise((resolve) => setTimeout(resolve, 1000))
 
-			// Save to Firestore
-			const snippetId = await createSnippet(snippet)
-
-			// Navigate to the created snippet, replacing the current entry to prevent going back to the form
-			navigate(`/snippets/${snippetId}?tab=code`, { replace: true })
+			// Show success by navigating to snippets list
+			// In a real app, this would be the created snippet page
+			navigate('/snippets', { replace: true })
 		} catch (err) {
+			// This won't actually happen in portfolio mode, but keeping for UI consistency
 			console.error('Error creating snippet:', err)
 			setError(err.message || 'Failed to create snippet. Please try again.')
 		} finally {
@@ -55,7 +40,11 @@ const CreateSnippetPage = () => {
 						<div className='error-content'>
 							<span className='error-icon'>⚠️</span>
 							<span className='error-text'>{error}</span>
-							<button className='error-dismiss' onClick={() => setError(null)} aria-label='Dismiss error'>
+							<button
+								className='error-dismiss'
+								onClick={() => setError(null)}
+								aria-label='Dismiss error'
+							>
 								×
 							</button>
 						</div>
