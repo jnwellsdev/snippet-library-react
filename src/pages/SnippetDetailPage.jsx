@@ -53,7 +53,7 @@ const SnippetDetailPage = () => {
 				setError('Failed to load snippet. Please try again.')
 				setSnippet(null)
 			} finally {
-				setIsLoading(false)
+				setTimeout(() => setIsLoading(false), 500)
 			}
 		}
 

@@ -1,8 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import {
+	LoadingButton,
+	LoadingCard,
+	PageContainer,
+	SnippetCard,
+} from '../components'
 import { useAuth } from '../contexts/AuthContext'
 import { getTopSnippets } from '../services/firestoreService'
-import { SnippetCard, PageContainer, LoadingCard, LoadingButton } from '../components'
 import './LandingPage.css'
 
 const LandingPage = () => {
@@ -23,7 +28,7 @@ const LandingPage = () => {
 				console.error('Error fetching top snippets:', err)
 				setError('Failed to load top snippets')
 			} finally {
-				setLoading(false)
+				setTimeout(() => setLoading(false), 500)
 			}
 		}
 
@@ -48,7 +53,10 @@ const LandingPage = () => {
 				<div className='landing-page'>
 					<div className='welcome-section'>
 						<h3>Welcome.</h3>
-						<p className='welcome-text'>Sign in with the magic link to Add, Edit, Vote, Approve and Share HTML Snippets.</p>
+						<p className='welcome-text'>
+							Sign in with the magic link to Add, Edit, Vote, Approve and Share
+							HTML Snippets.
+						</p>
 					</div>
 
 					<div className='featured-snippets-section'>
@@ -66,7 +74,10 @@ const LandingPage = () => {
 			<div className='landing-page'>
 				<div className='welcome-section'>
 					<h3>Welcome.</h3>
-					<p className='welcome-text'>Sign in with the magic link to Add, Edit, Vote, Approve and Share HTML Snippets.</p>
+					<p className='welcome-text'>
+						Sign in with the magic link to Add, Edit, Vote, Approve and Share
+						HTML Snippets.
+					</p>
 				</div>
 
 				<div className='featured-snippets-section'>
@@ -78,14 +89,24 @@ const LandingPage = () => {
 
 					{topSnippets.length === 0 && !error ? (
 						<div className='empty-state' data-testid='empty-state'>
-							<LoadingButton variant='secondary' size='medium' onClick={handleCreateSnippet}>
+							<LoadingButton
+								variant='secondary'
+								size='medium'
+								onClick={handleCreateSnippet}
+							>
 								Create the First Snippet
 							</LoadingButton>
 						</div>
 					) : !error ? (
 						<div className='snippets-grid' data-testid='snippets-grid'>
 							{topSnippets.map((snippet) => (
-								<SnippetCard key={snippet.id} snippet={snippet} onClick={handleSnippetClick} showVoteCount={true} livePreview={true} />
+								<SnippetCard
+									key={snippet.id}
+									snippet={snippet}
+									onClick={handleSnippetClick}
+									showVoteCount={true}
+									livePreview={true}
+								/>
 							))}
 						</div>
 					) : null}

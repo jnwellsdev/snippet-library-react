@@ -1,7 +1,13 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import {
+	LoadingButton,
+	LoadingCard,
+	PageContainer,
+	SnippetCard,
+	TagFilter,
+} from '../components'
 import { getSnippets } from '../services/firestoreService'
-import { SnippetCard, PageContainer, LoadingCard, LoadingButton, TagFilter } from '../components'
 import './SnippetListPage.css'
 
 const perPage = 12
@@ -15,16 +21,21 @@ const SnippetListPage = () => {
 	const [hasNextPage, setHasNextPage] = useState(false)
 	const [lastDoc, setLastDoc] = useState(null)
 	const [selectedTags, setSelectedTags] = useState([])
-	const [sortBy, setSortBy] = useState('popular')
+	const [sortBy, setSortBy] = useState('recent')
 
 	const navigate = useNavigate()
 
-	const loadSnippets = async (page = 1, lastValue = null, currentSortBy = sortBy) => {
+	const loadSnippets = async (
+		page = 1,
+		lastValue = null,
+		currentSortBy = sortBy
+	) => {
 		try {
 			setLoading(true)
 			setError(null)
 
-			const orderByField = currentSortBy === 'recent' ? 'createdAt' : 'voteCount'
+			const orderByField =
+				currentSortBy === 'recent' ? 'createdAt' : 'voteCount'
 			const options = {
 				orderByField,
 				orderDirection: 'desc',
@@ -32,7 +43,9 @@ const SnippetListPage = () => {
 			}
 
 			if (lastValue !== null && page > 1) {
-				options.whereConditions = [{ field: orderByField, operator: '<=', value: lastValue }]
+				options.whereConditions = [
+					{ field: orderByField, operator: '<=', value: lastValue },
+				]
 			}
 
 			const fetchedSnippets = await getSnippets(options)
@@ -47,7 +60,9 @@ const SnippetListPage = () => {
 
 			// Check for more pages
 			const hasMore = fetchedSnippets.length > perPage
-			const displaySnippets = hasMore ? fetchedSnippets.slice(0, perPage) : fetchedSnippets
+			const displaySnippets = hasMore
+				? fetchedSnippets.slice(0, perPage)
+				: fetchedSnippets
 
 			if (page === 1) {
 				setSnippets(displaySnippets)
@@ -66,7 +81,7 @@ const SnippetListPage = () => {
 			console.error('Error loading snippets:', err)
 			setError('Failed to load snippets. Please try again.')
 		} finally {
-			setLoading(false)
+			setTimeout(() => setLoading(false), 500)
 		}
 	}
 
@@ -127,13 +142,19 @@ const SnippetListPage = () => {
 
 	const displayedSnippets = getFilteredSnippets()
 
-	if (loading && snippets.length === 0) {
+	if (loading) {
 		return (
 			<PageContainer>
 				<div className='snippet-list-page'>
 					<div className='snippet-list-controls'>
 						<div className='snippet-list-filters'>
-							<TagFilter selectedTags={selectedTags} onTagsChange={handleTagsChange} sortBy={sortBy} onSortChange={handleSortChange} className='snippet-list-tag-filter' />
+							<TagFilter
+								selectedTags={selectedTags}
+								onTagsChange={handleTagsChange}
+								sortBy={sortBy}
+								onSortChange={handleSortChange}
+								className='snippet-list-tag-filter'
+							/>
 						</div>
 					</div>
 
@@ -169,7 +190,13 @@ const SnippetListPage = () => {
 			<div className='snippet-list-page'>
 				<div className='snippet-list-controls'>
 					<div className='snippet-list-filters'>
-						<TagFilter selectedTags={selectedTags} onTagsChange={handleTagsChange} sortBy={sortBy} onSortChange={handleSortChange} className='snippet-list-tag-filter' />
+						<TagFilter
+							selectedTags={selectedTags}
+							onTagsChange={handleTagsChange}
+							sortBy={sortBy}
+							onSortChange={handleSortChange}
+							className='snippet-list-tag-filter'
+						/>
 					</div>
 				</div>
 
@@ -177,14 +204,20 @@ const SnippetListPage = () => {
 					<div className='snippet-list-empty'>
 						<h2>No snippets yet</h2>
 						<p>Be the first to share an HTML snippet with the community!</p>
-						<button className='create-snippet-button' onClick={() => navigate('/create')}>
+						<button
+							className='create-snippet-button'
+							onClick={() => navigate('/create')}
+						>
 							Create First Snippet
 						</button>
 					</div>
 				) : displayedSnippets.length === 0 && selectedTags.length > 0 ? (
 					<div className='snippet-list-empty'>
 						<h2>No snippets found</h2>
-						<button className='create-snippet-button' onClick={() => navigate('/create')}>
+						<button
+							className='create-snippet-button'
+							onClick={() => navigate('/create')}
+						>
 							Create New Snippet
 						</button>
 					</div>
@@ -192,31 +225,50 @@ const SnippetListPage = () => {
 					<>
 						<div className='snippet-list-grid'>
 							{displayedSnippets.map((snippet) => (
-								<SnippetCard key={snippet.id} snippet={snippet} onClick={handleSnippetClick} className='snippet-list-card' livePreview={true} />
+								<SnippetCard
+									key={snippet.id}
+									snippet={snippet}
+									onClick={handleSnippetClick}
+									className='snippet-list-card'
+									livePreview={true}
+								/>
 							))}
 
-							{loading && currentPage > 1 && <LoadingCard variant='snippet' count={6} />}
+							{loading && currentPage > 1 && (
+								<LoadingCard variant='snippet' count={6} />
+							)}
 						</div>
 
 						{selectedTags.length === 0 && hasNextPage && (
 							<div className='snippet-list-pagination'>
-								<LoadingButton onClick={handleLoadMore} loading={loading} loadingText='Loading more...' variant='primary' size='medium'>
+								<LoadingButton
+									onClick={handleLoadMore}
+									loading={loading}
+									loadingText='Loading more...'
+									variant='primary'
+									size='medium'
+								>
 									Load More Snippets
 								</LoadingButton>
 							</div>
 						)}
 
-						{selectedTags.length === 0 && !hasNextPage && snippets.length > 0 && (
-							<div className='snippet-list-end'>
-								<p>You've reached the end! 🎉</p>
-								<p>
-									<button className='create-snippet-link' onClick={() => navigate('/create')}>
-										Create a new snippet
-									</button>{' '}
-									to add more content.
-								</p>
-							</div>
-						)}
+						{selectedTags.length === 0 &&
+							!hasNextPage &&
+							snippets.length > 0 && (
+								<div className='snippet-list-end'>
+									<p>You've reached the end! 🎉</p>
+									<p>
+										<button
+											className='create-snippet-link'
+											onClick={() => navigate('/create')}
+										>
+											Create a new snippet
+										</button>{' '}
+										to add more content.
+									</p>
+								</div>
+							)}
 					</>
 				)}
 
